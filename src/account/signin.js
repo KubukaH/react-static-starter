@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useField, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // MUI imports
 import TextField from "@mui/material/TextField";
@@ -9,8 +9,9 @@ import Button from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
 
 // Local imports
-import { accountService, alertService } from "../_services";
+import { alertService } from "../_services";
 import AccountIndex from ".";
+import { useCTX } from "../components/context";
 
 const MyTextField = ({label, ...props}) => {
   const [field, meta] = useField(props);
@@ -51,6 +52,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = () => {
+  const ctx = useCTX();
+  const { signin, done } = ctx;
+  const navigate = useNavigate();
+
   return (
     <AccountIndex
       rightText="Sign In"
@@ -112,13 +117,11 @@ const SignIn = () => {
               validationSchema={validationSchema}
               onSubmit={({ email, password }, { setSubmitting }) => {
                 alertService.clear();
-                accountService.login(email, password).then(() => {
-                  alertService.success("You are In!");
-                  setSubmitting(false);
-                }).catch((error) => {
-                  alertService.error(error);
-                  setSubmitting(false);
-                  console.log(error);
+                signin(email, password, () => {
+                  done === true 
+                    ? 
+                      (alertService.success("Welcome."), navigate("/", {replace:true}))
+                    : (alertService.error("error"), setSubmitting(false));
                 });
               }}
             >

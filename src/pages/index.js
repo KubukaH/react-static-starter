@@ -17,6 +17,8 @@ import AboutLayout from "../components/Layouts/aboutLayout";
 import AccountLayout from "../components/Layouts/accountLayout";
 import NewsLayout from "../components/Layouts/newsLayout";
 import SignUp from "../account/signup";
+import ArchiveHeadlines from "./archives/heads";
+import ArchiveMain from "./archives/arch";
 
 const PagesIndex = () => {
   const routes = [
@@ -50,7 +52,7 @@ const PagesIndex = () => {
           element: <NewsLayout />,
           children: [
             {index: true, element: <NewsHeadlines />},
-            {path: ":id", element: <NewsArticle />}
+            {path: ":artId", element: <NewsArticle />}
           ]
         },
         {
@@ -59,6 +61,14 @@ const PagesIndex = () => {
           children: [
             {index: true, element: <SignIn />},
             {path: "signup", element: <SignUp />}
+          ]
+        },
+        {
+          path: "archives",
+          element: <NewsLayout />,
+          children: [
+            {index: true, element: <ArchiveHeadlines />},
+            {path: ":arcId", element: <ArchiveMain />}
           ]
         },
         {path: "*", element: <NotFound />}

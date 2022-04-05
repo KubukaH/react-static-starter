@@ -4,7 +4,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 
 // Local Imports
-import di from "../../tools/media/images/mapmu.jpg";
+import di from "../../tools/media/images/blank-avatar.jpg";
 
 const board = [
   {

@@ -4,7 +4,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 
 // Local Imports
-import di from "../../tools/media/images/mapmu.jpg";
+import di from "../../tools/media/images/blank-avatar.jpg";
 
 const employees = [
   {
@@ -62,7 +62,7 @@ const Secretariat = () => {
           alt="Director"
           sx={{
             width: "100%",
-            height: "100%"
+            height: 1
           }}
         />
         <Box

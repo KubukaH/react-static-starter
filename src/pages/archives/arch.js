@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 
 // MUI Components
 import Box from "@mui/material/Box";
-import { useCTX } from "../../components/context";
+import { getNewsArticleById } from "../../settings/archives/newsArchive";
+import { getImageById } from "../../settings/images";
 
-const NewsArticle = () => {
-  const ctx = useCTX();
-  const { article } = ctx;
+const ArchiveMain = () => {
+  const { arcId } = useParams();
+  const article = getNewsArticleById(arcId);
+  const image = getImageById(article.attribute);
 
   return (
     <Box
@@ -37,7 +39,7 @@ const NewsArticle = () => {
             px: 4
           }}
         >
-          {article.article_title}
+          {article.title}
         </Box>
         <Box
           sx={{
@@ -52,6 +54,14 @@ const NewsArticle = () => {
         </Box>
       </Box>
       <Box
+        component="img"
+        src={image.img}
+        alt={image.title}
+        sx={{
+          width: "100%"
+        }}
+      />
+      <Box
         sx={{
           color: "text.primary",
           fontSize: 14,
@@ -59,10 +69,10 @@ const NewsArticle = () => {
           p: [1, 4]
         }}
       >
-        {article.article_content}
+        {article.content}
       </Box>
     </Box>
   );
 }
 
-export default NewsArticle;
+export default ArchiveMain;

@@ -7,8 +7,12 @@ import IconButton from "@mui/material/IconButton";
 
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
+import { useCTX } from "../../components/context";
 
-const SearchBox = ({ searchText, requestSearch, clearSearch }) => {
+const SearchBox = () => {
+  const ctx = useCTX();
+  const { requestSearch, searchText } = ctx;
+  
   return (
     <Box
       sx={{
@@ -26,7 +30,7 @@ const SearchBox = ({ searchText, requestSearch, clearSearch }) => {
           variant="outlined"
           size="small"
           value={searchText}
-          onChange={requestSearch}
+          onChange={(e) => requestSearch(e.target.value)}
           placeholder="Search…"
           InputProps={{
             startAdornment: <SearchIcon fontSize="small" />,
@@ -36,7 +40,7 @@ const SearchBox = ({ searchText, requestSearch, clearSearch }) => {
                 aria-label="Clear"
                 size="small"
                 style={{ visibility: searchText ? 'visible' : 'hidden' }}
-                onClick={clearSearch}
+                onClick={() => requestSearch("")}
               >
                 <ClearIcon fontSize="small" />
               </IconButton>

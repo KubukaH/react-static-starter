@@ -8,15 +8,15 @@ const menuOptions = [
     links: [
       {
         name: "Director",
-        url: "/basilwizi/about/secretariat-and-management"
+        url: "/basilwizi/about"
       },
       {
         name: "Management",
-        url: "/basilwizi/about/secretariat-and-management"
+        url: "/basilwizi/about"
       },
       {
         name: "Field Officers",
-        url: "/basilwizi/about/secretariat-and-management"
+        url: "/basilwizi/about"
       },
     ]
   },

@@ -6,7 +6,6 @@ import { Box } from '@mui/system';
 import { alpha, useTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import IconButton from '@mui/material/IconButton';
-import Divider from '@mui/material/Divider';
 
 // MUI Icons
 import ChromeReader from '@mui/icons-material/ChromeReaderModeTwoTone';
@@ -20,12 +19,13 @@ import banner from '../assets/img/basilwizi_banner.jpg';
 import Subscribe from "./subscribe";
 import NewsBrief from "./fill/newsBrief";
 import ShowcaseBrief from "./fill/showcaseBrief";
+import { useCTX } from "../components/context";
 
 const linksBtns = [
   {
     name: "about",
     icon: <InfoIcon />,
-    url: "/basilwizi/aboutus"
+    url: "/basilwizi"
   },
   {
     name: "contact",
@@ -73,6 +73,8 @@ const socialMedia = [
 
 const HomePage = () => {
   const theme = useTheme();
+  const auth = useCTX();
+  const { userValue } = auth;
 
   return (
     <Box
@@ -116,6 +118,7 @@ const HomePage = () => {
           fontSize: 13, 
           fontWeight: "medium",
           p: 8,
+          textAlign: "justify",
         }}
       >
         Basilwizi Trust is a community development organization, founded in 2002 by the local people of the Zambezi valley, north western part of Zimbabwe. The existence of Basilwizi Trust is a demonstration of concern and determination by Zambezi valley communities to demand and restore their dignity taken away from them by the displacement from the Zambezi River banks. Poverty, the main cause of vulnerability to food insecurity, is one of the defining features of the Zambezi valley. The Zambezi valley districts rank least on the Zimbabwe development index and yet they have great potential to be better from the vast natural resources found in the region. Thus Basilwizi works to assist the communities of Binga, Gokwe North, Hwange and Nyaminyami administrative districts to realize own development and emancipation from extreme poverty through community led interventions.
@@ -336,26 +339,29 @@ const HomePage = () => {
                 ))
               }
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: ["flex-start", "flex-end"], 
-                p: 1
-              }}
-            >
+            {
+              !userValue && 
               <Box
-                component={Link}
-                to="/basilwizi/acc"
                 sx={{
-                  color: "inherit", fontWeight: "medium", fontSize: 20,
-                  textDecoration: "none", pt: 2
-                }} 
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  justifyContent: ["flex-start", "flex-end"], 
+                  p: 1
+                }}
               >
-                Sign In / Sign Up
+                <Box
+                  component={Link}
+                  to="/basilwizi/signin"
+                  sx={{
+                    color: "inherit", fontWeight: "medium", fontSize: 20,
+                    textDecoration: "none", pt: 2
+                  }} 
+                >
+                  Sign In / Sign Up
+                </Box>
               </Box>
-            </Box>
+            }
           </Box>
         </Box>
       </Box>

@@ -1,6 +1,7 @@
 import { fetchWrapper } from '@/_helpers';
+import { server } from "../constants";
 
-const baseUrl = `news`;
+const baseUrl = `${server.serverUrl}/news`;
 
 export const newsService = {
   saveNews,
@@ -16,8 +17,12 @@ function saveNews(params) {
 }
 
 function getAll() {
-  return fetchWrapper.get(baseUrl);
-}
+  return fetchWrapper.get(baseUrl).then(
+    (items) => {
+      return items;
+    }
+  );
+};
 
 function getById(id) {
   return fetchWrapper.get(`${baseUrl}/${id}`);

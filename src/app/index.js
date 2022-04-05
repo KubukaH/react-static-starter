@@ -14,6 +14,10 @@ import PagesIndex from '../pages';
 import MusicIndex from '../components/music';
 import ImagePreview from '../home/fill/previewImage';
 import ImageModal from '../home/fill/imageModal';
+import AlertPop from "../components/alert";
+import UserIndex from '../user';
+import Protected from "../components/routes/protectedRoute";
+import { ContextProvider } from '../components/context';
 
 const App = () => {
   const location = useLocation();
@@ -25,25 +29,33 @@ const App = () => {
       <CssBaseline />
       <NavigationScroll>
         <ThemeProvider theme={theme}>
-          <Routes location={ state || location } >
-            <Route path="/" element={<AppLayout />}>
-              <Route index element={<HomePage />} />
-              <Route path="basilwizi/*" element={<PagesIndex />} />
-              <Route path='/img/:id' element={<ImagePreview />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-          <MusicIndex />
-          {/* Show the modal when a `backgroundLocation` is set */}
-          {state && (
-            <Routes>
-              <Route path="/img/:id" element={<ImageModal />} />
+          <ContextProvider>
+            <Routes location={ state || location } >
+              <Route path="/" element={<AppLayout />}>
+                <Route index element={<HomePage />} />
+                <Route path="basilwizi/*" element={<PagesIndex />} />
+                <Route path='/img/:id' element={<ImagePreview />} />
+                <Route path="user/*" element={
+                  <Protected>
+                    <UserIndex />
+                  </Protected>
+                } />
+                <Route path="*" element={<NotFound />} />
+              </Route>
             </Routes>
-          )}
+            <MusicIndex />
+            <AlertPop />
+            {/* Show the modal when a `backgroundLocation` is set */}
+            {state && (
+              <Routes>
+                <Route path="/img/:id" element={<ImageModal />} />
+              </Routes>
+            )}
+          </ContextProvider>
         </ThemeProvider>
       </NavigationScroll>
     </StyledEngineProvider>
   );
-}
+};
 
 export default App;

@@ -8,20 +8,20 @@ import IconButton from "@mui/material/IconButton";
 
 // LOCAL Imports
 import { Link } from "react-router-dom";
-import SearchBox from "./searchBox";
 import { useCTX } from "../../components/context";
+import SearchBox from "../news/searchBox";
 
-const NewsHeadlines = () => {
+const ArchiveHeadlines = () => {
   const theme = useTheme();
   const ctx = useCTX();
-  const { articles, requestSearch, searchText } = ctx;
+  const { archives, archiveSearch, searchText } = ctx;
 
   const postGrid = React.useCallback(() => {
-    if (articles.length > 0) {
-      return articles.map((head) => {
+    if (archives.length > 0) {
+      return archives.map((head) => {
         return (
           <Box
-            key={head.article_title}
+            key={head.title}
             sx={{
               width: 1,
               height: 256,
@@ -48,7 +48,7 @@ const NewsHeadlines = () => {
                 overflow: "hidden"
               }}
             >
-              {head.article_title}
+              {head.title}
             </Box>
             <Box
               sx={{
@@ -61,11 +61,11 @@ const NewsHeadlines = () => {
                 textAlign: "justify"
               }}
             >
-              {head.article_content}
+              {head.content}
             </Box>
             <Box
               component={Link}
-              to={`/basilwizi/online-news/${head.id}`}
+              to={`/basilwizi/archives/${head.attribute}`}
               sx={{
                 color: "text.secondary",
                 fontSize: 13,
@@ -121,7 +121,7 @@ const NewsHeadlines = () => {
             aria-label="Clear"
             size="small"
             style={{ visibility: searchText ? 'visible' : 'hidden' }}
-            onClick={() => requestSearch("")}
+            onClick={() => archiveSearch("")}
           >
             <ClearIcon fontSize="small" />
           </IconButton>
@@ -142,7 +142,7 @@ const NewsHeadlines = () => {
         </Box>
       </Box>
     )
-  } ,[articles, requestSearch, searchText]);
+  } ,[archives, archiveSearch, searchText]);
 
   return (
     <>
@@ -163,6 +163,6 @@ const NewsHeadlines = () => {
     </Box>
     </>
   );
-}
+};
 
-export default NewsHeadlines;
+export default ArchiveHeadlines;

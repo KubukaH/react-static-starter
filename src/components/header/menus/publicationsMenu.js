@@ -30,7 +30,7 @@ const menuOptions = [
       },
       {
         name: "Archives",
-        url: "/basilwizi/newsletter"
+        url: "/basilwizi/archives"
       },
       {
         name: "Order yours today",

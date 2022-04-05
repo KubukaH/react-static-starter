@@ -89,7 +89,7 @@ export default function AlertPop() {
             open={open} 
             autoHideDuration={6000} 
             onClose={handleClose}
-            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
             sx={{
               borderRadius: 0
             }}

@@ -38,7 +38,6 @@ function logout() {
   fetchWrapper.post(`${baseUrl}/revoke-token`, {});
   stopRefreshTokenTimer();
   userSubject.next(null);
-  history.push('/account/users/login');
 }
 
 function refreshToken() {

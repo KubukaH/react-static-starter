@@ -11,6 +11,7 @@ import { Facebook, Twitter, Instagram, AddPhotoAlternate, Telegram, WhatsApp } f
 import banner from '../../assets/img/basilwizi_banner.jpg';
 import Subscribe from "../../home/subscribe";
 import BreadCrumbsPage from "../breadcrumbs";
+import { useCTX } from "../context";
 
 const socialMedia = [
   {
@@ -41,6 +42,7 @@ const socialMedia = [
 
 const PagesLayout = () => {
   const theme = useTheme();
+  const auth = useCTX();
 
   return (
     <Box
@@ -184,26 +186,29 @@ const PagesLayout = () => {
                 ))
               }
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: ["flex-start", "flex-end"], 
-                p: 1
-              }}
-            >
+            {
+              !auth.user &&
               <Box
-                component={Link}
-                to="/basilwizi/acc"
                 sx={{
-                  color: "inherit", fontWeight: "medium", fontSize: 20,
-                  textDecoration: "none", pt: 2
-                }} 
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  justifyContent: ["flex-start", "flex-end"], 
+                  p: 1
+                }}
               >
-                Sign In / Sign Up
+                <Box
+                  component={Link}
+                  to="/basilwizi/acc"
+                  sx={{
+                    color: "inherit", fontWeight: "medium", fontSize: 20,
+                    textDecoration: "none", pt: 2
+                  }} 
+                >
+                  Sign In / Sign Up
+                </Box>
               </Box>
-            </Box>
+            }
           </Box>
         </Box>
       </Box>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useField, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // MUI imports
 import TextField from "@mui/material/TextField";
@@ -15,6 +15,7 @@ import {
 // Local imports
 import { accountService, alertService } from "../_services";
 import AccountIndex from ".";
+import { useCTX } from "../components/context";
 
 const MyTextField = ({label, ...props}) => {
   const [field, meta] = useField(props);
@@ -86,6 +87,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  const ctx = useCTX();
+  const navigate = useNavigate();
+
   return (
     <AccountIndex
       rightText="Sign Up New User"
@@ -148,13 +152,14 @@ const SignUp = () => {
               validationSchema={validationSchema}
               onSubmit={(fields, { setSubmitting }) => {
                 alertService.clear();
-                accountService.login(fields).then(() => {
-                  alertService.success("You are In!");
-                  setSubmitting(false);
-                }).catch((error) => {
-                  alertService.error(error);
-                  setSubmitting(false);
-                  console.log(error);
+                ctx.signup(fields, () => {
+                  ctx.done === true
+                    ? (
+                      alertService.success("Check your email address fro instructions."),
+                      setSubmitting(false),
+                      navigate("/basilwizi/acc")
+                    )
+                    : setSubmitting(false);
                 });
               }}
             >

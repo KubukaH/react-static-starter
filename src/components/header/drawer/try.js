@@ -148,7 +148,7 @@ export default function GmailTreeView({ closeDrawer }) {
       <StyledTreeItem nodeId="3" labelText={"Programmes & Projects"} labelIcon={Label}>
         <StyledTreeItem nodeId="10" labelText={"Programmes & Projects"} labelIcon={Label}>
           <StyledTreeItem
-            nodeId="19"
+            nodeId="20"
             labelText="Governance and public accountability"
             labelIcon={AddTaskIcon}
             labelInfo="90"
@@ -157,7 +157,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/governance-and-accountability")}
           />
           <StyledTreeItem
-            nodeId="20"
+            nodeId="21"
             labelText="Local rights"
             labelIcon={AddTaskIcon}
             labelInfo="90"
@@ -166,7 +166,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/local-rights")}
           />
           <StyledTreeItem
-            nodeId="21"
+            nodeId="22"
             labelText="Women empowerment"
             labelIcon={AddTaskIcon}
             labelInfo="90"
@@ -178,7 +178,7 @@ export default function GmailTreeView({ closeDrawer }) {
         </StyledTreeItem>
         <StyledTreeItem nodeId="11" labelText={"Education and Culture"} labelIcon={Label}>
           <StyledTreeItem
-            nodeId="22"
+            nodeId="23"
             labelText="Language and Culture"
             labelIcon={AddTaskIcon}
             labelInfo="2,294"
@@ -187,7 +187,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/language-and-culture")}
           />
           <StyledTreeItem
-            nodeId="23"
+            nodeId="24"
             labelText="Tonga online"
             labelIcon={AddTaskIcon}
             labelInfo="2,294"
@@ -196,7 +196,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/tonga-online")}
           />
           <StyledTreeItem
-            nodeId="24"
+            nodeId="25"
             labelText="Information creation access, and sharing"
             labelIcon={AddTaskIcon}
             labelInfo="2,294"
@@ -207,7 +207,7 @@ export default function GmailTreeView({ closeDrawer }) {
         </StyledTreeItem>
         <StyledTreeItem nodeId="12" labelText={"Livelihoods"} labelIcon={Label}>
           <StyledTreeItem
-            nodeId="25"
+            nodeId="26"
             labelText="Integrated acquaculture agriculture"
             labelIcon={AddTaskIcon}
             labelInfo="3,566"
@@ -216,7 +216,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/integrated-acquaculture-agriculture")}
           />
           <StyledTreeItem
-            nodeId="26"
+            nodeId="27"
             labelText="Protracted relief projects"
             labelIcon={AddTaskIcon}
             labelInfo="3,566"
@@ -225,7 +225,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/protracted-relief-projects")}
           />
           <StyledTreeItem
-            nodeId="27"
+            nodeId="28"
             labelText="Self help groups"
             labelIcon={AddTaskIcon}
             labelInfo="3,566"
@@ -265,6 +265,15 @@ export default function GmailTreeView({ closeDrawer }) {
         />
         <StyledTreeItem
           nodeId="17"
+          labelText="Archives"
+          labelIcon={ChromeReader}
+          labelInfo="733"
+          color="#3c8039"
+          bgColor="#e6f4ea"
+          onClick={() => actionItem("/basilwizi/archives")}
+        />
+        <StyledTreeItem
+          nodeId="18"
           labelText="Project evaluations"
           labelIcon={ChromeReader}
           labelInfo="733"
@@ -273,7 +282,7 @@ export default function GmailTreeView({ closeDrawer }) {
           onClick={() => actionItem("/basilwizi/project-evaluations")}
         />
         <StyledTreeItem
-          nodeId="18"
+          nodeId="19"
           labelText="Other documents"
           labelIcon={ChromeReader}
           labelInfo="733"

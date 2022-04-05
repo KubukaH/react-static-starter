@@ -4,7 +4,7 @@ export const gender = [
 ];
 
 export const server = {
-  serverUrl: "https://basilwizi-server.herokuapp.com"
+  serverUrl: "http://localhost:7150"
 };
 
 export const category = [

@@ -5,8 +5,6 @@ import AppBar from '@mui/material/AppBar';
 import { Box } from '@mui/system';
 import Toolbar from '@mui/material/Toolbar';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import IconButton from '@mui/material/IconButton';
 
 // Local imports
 import AboutMenu from './menus/aboutMenu';
@@ -16,6 +14,7 @@ import PartnersMenu from './menus/partnersMenu';
 import ContactMenu from './menus/contactMenu';
 import HomeMenu from './menus/homeMenu';
 import ToggleDrawer from './drawer';
+// import ProfileMenu from './menus/profileMenu';
 
 const navs = [
   {
@@ -41,11 +40,14 @@ const navs = [
   {
     item: <ContactMenu />,
     base: 'six'
-  }
+  },
+  /*{
+    item: <ProfileMenu />,
+    base: 'seven'
+  }*/
 ];
 
-function ElevationScroll(props) {
-  const { children } = props;
+function ElevationScroll({ children }) {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -99,16 +101,18 @@ const Header = (props) => {
                 flexDirection: "row",
                 justifyContent: "space-around",
                 alignItems: "center",
-                width: "90%",
+                width: "100%",
                 mx: "auto",
                 height: "100%",
-                pb: 2
+                pb: 2,
+                pl: 1
               }}
             >
               <ToggleDrawer />
               <Box
                 sx={{
-                  fontSize: 16, fontWeight: "medium", color: "inherit"
+                  fontSize: 16, fontWeight: "medium", color: "inherit",
+                  fontFamily: "Roboto",
                 }}
               >
                 Basilwizi - people of the Great River
