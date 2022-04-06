@@ -199,7 +199,7 @@ const PagesLayout = () => {
               >
                 <Box
                   component={Link}
-                  to="/basilwizi/acc"
+                  to="/basilwizi/accounts"
                   sx={{
                     color: "inherit", fontWeight: "medium", fontSize: 20,
                     textDecoration: "none", pt: 2

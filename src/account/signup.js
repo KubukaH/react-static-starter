@@ -13,9 +13,10 @@ import {
  } from '@mui/material';
 
 // Local imports
-import { accountService, alertService } from "../_services";
+import { alertService } from "../_services";
 import AccountIndex from ".";
 import { useCTX } from "../components/context";
+import useLoading from "../components/extras/loading";
 
 const MyTextField = ({label, ...props}) => {
   const [field, meta] = useField(props);
@@ -89,6 +90,8 @@ const validationSchema = Yup.object().shape({
 const SignUp = () => {
   const ctx = useCTX();
   const navigate = useNavigate();
+  const { signupUser } = ctx;
+  const [isLoading, load] = useLoading();
 
   return (
     <AccountIndex
@@ -105,7 +108,7 @@ const SignUp = () => {
         >
           <Box
             component={Link}
-            to="/basilwizi/acc"
+            to="/basilwizi/accounts"
             sx={{
               color: "text.primary",
               fontSize: 11,
@@ -120,7 +123,7 @@ const SignUp = () => {
           </Box>
           <Box
             component={Link}
-            to="/basilwizi/acc/forgot-password"
+            to="/basilwizi/accounts/forgot-password"
             sx={{
               color: "text.primary",
               fontSize: 11,
@@ -152,15 +155,16 @@ const SignUp = () => {
               validationSchema={validationSchema}
               onSubmit={(fields, { setSubmitting }) => {
                 alertService.clear();
-                ctx.signup(fields, () => {
-                  ctx.done === true
-                    ? (
-                      alertService.success("Check your email address fro instructions."),
-                      setSubmitting(false),
-                      navigate("/basilwizi/acc")
-                    )
-                    : setSubmitting(false);
-                });
+                load(signupUser(fields))
+                  .then(() => {
+                    setSubmitting(false);
+                    navigate("/basilwizi/accounts");
+                    alertService.success("Check your email to verify account", { keepAfterRouteChange: true });
+                  })
+                  .catch((error) => {
+                    alertService.error(error);
+                    setSubmitting(false);
+                  });
               }}
             >
               {
@@ -215,9 +219,9 @@ const SignUp = () => {
                         type="submit"
                         variant="outlined"
                         color="primary"
-                        loading={isSubmitting}
+                        loading={isSubmitting || isLoading}
                       >
-                        Sign In
+                        Sign Up
                       </Button>
                     </Box>
                   </Form>

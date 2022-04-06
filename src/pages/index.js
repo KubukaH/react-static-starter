@@ -19,6 +19,7 @@ import NewsLayout from "../components/Layouts/newsLayout";
 import SignUp from "../account/signup";
 import ArchiveHeadlines from "./archives/heads";
 import ArchiveMain from "./archives/arch";
+import ForgotPassword from "../account/forgotPassword";
 
 const PagesIndex = () => {
   const routes = [
@@ -56,11 +57,12 @@ const PagesIndex = () => {
           ]
         },
         {
-          path: "acc",
+          path: "accounts",
           element: <AccountLayout />,
           children: [
             {index: true, element: <SignIn />},
-            {path: "signup", element: <SignUp />}
+            {path: "signup", element: <SignUp />},
+            {path: "forgot-password", element: <ForgotPassword />}
           ]
         },
         {

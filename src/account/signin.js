@@ -12,6 +12,7 @@ import Box from "@mui/material/Box";
 import { alertService } from "../_services";
 import AccountIndex from ".";
 import { useCTX } from "../components/context";
+import useLoading from "../components/extras/loading";
 
 const MyTextField = ({label, ...props}) => {
   const [field, meta] = useField(props);
@@ -53,8 +54,9 @@ const validationSchema = Yup.object().shape({
 
 const SignIn = () => {
   const ctx = useCTX();
-  const { signin, done } = ctx;
+  const { loginUser } = ctx;
   const navigate = useNavigate();
+  const [isLoading, load] = useLoading();
 
   return (
     <AccountIndex
@@ -117,12 +119,16 @@ const SignIn = () => {
               validationSchema={validationSchema}
               onSubmit={({ email, password }, { setSubmitting }) => {
                 alertService.clear();
-                signin(email, password, () => {
-                  done === true 
-                    ? 
-                      (alertService.success("Welcome."), navigate("/", {replace:true}))
-                    : (alertService.error("error"), setSubmitting(false));
-                });
+                load(loginUser(email, password))
+                  .then((user) => {
+                    alertService.success("Welcome!", { keepAfterRouteChange: true });
+                    setSubmitting(false);
+                    navigate("/", { replace: true });
+                  })
+                  .catch((error) => {
+                    setSubmitting(false);
+                    alertService.error(error);
+                  });
               }}
             >
               {
@@ -149,7 +155,7 @@ const SignIn = () => {
                         type="submit"
                         variant="outlined"
                         color="primary"
-                        loading={isSubmitting}
+                        loading={isSubmitting || isLoading}
                       >
                         Sign In
                       </Button>

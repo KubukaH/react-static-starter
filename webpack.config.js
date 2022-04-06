@@ -41,12 +41,14 @@ const config = {
     hot: 'only',
     open: true,
     proxy: {
-      '/api': {
-        target: 'https://basilwizi-server.herokuapp.com',
-        pathRewrite: { '^/api': '' },
-        secure: false,
-      },
-    }
+      "/.netlify": {
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "^/.netlify/functions": "",
+          secure: false,
+        }
+      }
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

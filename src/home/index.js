@@ -352,7 +352,7 @@ const HomePage = () => {
               >
                 <Box
                   component={Link}
-                  to="/basilwizi/signin"
+                  to="/basilwizi/accounts"
                   sx={{
                     color: "inherit", fontWeight: "medium", fontSize: 20,
                     textDecoration: "none", pt: 2
