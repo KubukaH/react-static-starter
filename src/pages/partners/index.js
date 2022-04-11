@@ -78,8 +78,11 @@ const PartnersPage = () => {
     >
       <Box 
         sx={{ 
-          color: "text.primary", fontSize: 28, fontWeight: "medium",
-          textDecoration: "underline"
+          color: "text.primary", 
+          fontSize: ["7vw", "3.5vw"], 
+          fontWeight: 300,
+          fontFamily: "Algerian", 
+          color: "text.base", 
         }} 
       >
         Partners and Sponsors
@@ -106,6 +109,7 @@ const PartnersPage = () => {
                 component="a"
                 href={item.url}
                 target="_blank"
+                rel="noreferer noopener"
                 sx={{ 
                   color: "text.base", 
                   fontSize: 14, 

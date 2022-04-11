@@ -103,14 +103,14 @@ const HomePage = () => {
       <Box
         sx={{ 
           color: "text.base", 
-          fontSize: "2vw", 
-          fontWeight: "bold",
+          fontSize: ["7vw","3.5vw"], 
+          fontWeight: 100,
           p: 5,
-          textDecoration: "underline solid #a0a465",
-          flexWrap: "wrap"
+          fontFamily: "Algerian", 
+          alignText: "center"
         }}
       >
-        Welcome to Basilwizi - “People of the Great River”
+        Welcome - Tutambule
       </Box>
       <Box 
         sx={{ 

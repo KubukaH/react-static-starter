@@ -16,7 +16,7 @@ import {
 import { alertService } from "../_services";
 import AccountIndex from ".";
 import { useCTX } from "../components/context";
-import useLoading from "../components/extras/loading";
+import { auth } from "../lambda/auth";
 
 const MyTextField = ({label, ...props}) => {
   const [field, meta] = useField(props);
@@ -90,8 +90,6 @@ const validationSchema = Yup.object().shape({
 const SignUp = () => {
   const ctx = useCTX();
   const navigate = useNavigate();
-  const { signupUser } = ctx;
-  const [isLoading, load] = useLoading();
 
   return (
     <AccountIndex
@@ -123,7 +121,7 @@ const SignUp = () => {
           </Box>
           <Box
             component={Link}
-            to="/basilwizi/accounts/forgot-password"
+            to="forgot-password"
             sx={{
               color: "text.primary",
               fontSize: 11,
@@ -155,14 +153,16 @@ const SignUp = () => {
               validationSchema={validationSchema}
               onSubmit={(fields, { setSubmitting }) => {
                 alertService.clear();
-                load(signupUser(fields))
-                  .then(() => {
+                auth
+                  .signup(fields)
+                  .then((response) => {
+                    console.log('Confirmation email sent', response);
+                    alertService.success("COnfirmation sent");
                     setSubmitting(false);
                     navigate("/basilwizi/accounts");
-                    alertService.success("Check your email to verify account", { keepAfterRouteChange: true });
                   })
                   .catch((error) => {
-                    alertService.error(error);
+                    console.log("It's an error", error);
                     setSubmitting(false);
                   });
               }}
@@ -219,9 +219,9 @@ const SignUp = () => {
                         type="submit"
                         variant="outlined"
                         color="primary"
-                        loading={isSubmitting || isLoading}
+                        loading={isSubmitting}
                       >
-                        Sign Up
+                        Sign In
                       </Button>
                     </Box>
                   </Form>

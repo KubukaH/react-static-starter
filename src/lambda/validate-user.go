@@ -2,14 +2,13 @@ package main
 
 import (
 	"context"
-	"encoding/json"
+	"fmt"
 	"log"
-	"strings"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
 // BodyStruct is the shape of the inbound JSON in the request.Body
@@ -32,55 +31,25 @@ type BodyStruct struct {
 	} `json:"user"`
 }
 
-type userInfo struct {
-	AppMetadata struct {
-		Roles []string `json:"roles"`
-	} `json:"app_metadata"`
-}
-
-func validateUser(email string) bool {
-	s := strings.Split(email, "@")
-	if len(s) == 2 && s[1] != "fakedomain.com" {
-		return true
-	}
-	return false
-}
-
-func makeBody() string {
-	userDetails := userInfo{}
-	userDetails.AppMetadata.Roles = append(userDetails.AppMetadata.Roles, "netlifriend")
-	var returnBody string
-	if body, err := json.Marshal(userDetails); err != nil {
-		log.Fatal(err)
-	} else {
-		returnBody = string(body)
-	}
-	return returnBody
-}
-
-func handler (context, events, request) {
-	var eventBody BodyStruct
-	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
-	defer cancel()
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb+srv://basilwizi_01:basilwizi@basilwizi0.x9qlt.mongodb.net/Basilwizi0?retryWrites=true&w=majority"))
-
-	if err := json.Unmarshal([]byte(request.Body), &eventBody); err == nil {
-		isValid := validateUser(eventBody.User.Email)
-		if isValid {
-			return &events.APIGatewayProxyResponse{
-				StatusCode: 200,
-				Body:       makeBody(),
-			}, nil
-		}
-	}
-	log.Print(eventBody)
-	return &events.APIGatewayProxyResponse{
-		StatusCode: 401,
-		Body:       "Invalid User",
-	}, nil
-}
-
 func main() {
+	// Create a Client and execute a ListDatabases operation.
 
-	lambda.Start(handler)
+	client, err := mongo.Connect(
+		context.TODO(),
+		options.Client().ApplyURI("mongodb+srv://basilwizi_01:basilwizi@basilwizi0.x9qlt.mongodb.net/Basilwizi0?retryWrites=true&w=majority"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer func() {
+		if err = client.Disconnect(context.TODO()); err != nil {
+			log.Fatal(err)
+		}
+	}()
+
+	collection := client.Database("Basilwizi0").Collection("accounts")
+	result, err := collection.InsertOne(context.TODO(), bson.D{{"x", 1}})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("inserted ID: %v\n", result.InsertedID)
 }

@@ -8,15 +8,15 @@ const menuOptions = [
     links: [
       {
         name: "Governance & public accountability",
-        url: "/basilwizi/governance-programme"
+        url: "/basilwizi/participatory-local-governance-and-public-accountability-project"
       },
       {
         name: "Local rights",
-        url: "/basilwizi/governance-programme"
+        url: "/basilwizi/local-rights"
       },
       {
         name: "Women empowerment",
-        url: "/basilwizi/governance-programme"
+        url: "/basilwizi/women-economic-empowerment-project"
       },
     ]
   },
@@ -25,15 +25,15 @@ const menuOptions = [
     links: [
       {
         name: "Language and culture",
-        url: "/basilwizi/education-and-culture"
+        url: "/basilwizi/language-and-culture-project"
       },
       {
         name: "Tonga online",
-        url: "/basilwizi/education-and-culture"
+        url: "/basilwizi/tonga-online-project"
       },
       {
         name: "Information Creation, Access and Sharing",
-        url: "/basilwizi/education-and-culture"
+        url: "/basilwizi/integrated-information-creation-access-and-sharing"
       },
     ]
   },
@@ -42,15 +42,15 @@ const menuOptions = [
     links: [
       {
         name: "Integrated Acquaculture Agriculture",
-        url: "/basilwizi/livelihoods-programme"
+        url: "/basilwizi/integrated-aquaculture-agriculture-project"
       },
       {
         name: "Protracted Relief Projects",
-        url: "/basilwizi/livelihoods-programme"
+        url: "/basilwizi/protracted-relief-projects-binga-and-gokwe-north"
       },
       {
         name: "Self Help Groups",
-        url: "/basilwizi/livelihoods-programme"
+        url: "/basilwizi/self-help-groups"
       },
     ]
   },
@@ -59,15 +59,7 @@ const menuOptions = [
     links: [
       {
         name: "Programmes",
-        url: "/basilwizi/hiv-aids-programme"
-      },
-      {
-        name: "Projects",
-        url: "/basilwizi/hiv-aids-programme"
-      },
-      {
-        name: "Community engagement",
-        url: "/basilwizi/hiv-aids-programme"
+        url: "/basilwizi/health-HIV-and-AIDS-programme"
       },
     ]
   },

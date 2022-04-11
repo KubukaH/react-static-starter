@@ -7,43 +7,43 @@ import { Link } from "react-router-dom";
 
 const data = [
   {
-    title: "Teachers Waiting Training Scheme",
-    content: "Learn more about Basilwizi Teachers Waiting Training Scheme. The scheme is part of Basilwizi's effort to emancipate Tonga teaching.",
-    link: "/basilwizi/online-news/teachers-programme",
+    title: "Basilwizi hands over state of the art computers",
+    content: "On the 27th of October 2011, Basilwizi handed over the Public Access Point (PAP) at Binga Library to Binga Rural District Council in a bid to ...",
+    link: "/basilwizi/previous-archived/basilwizi-works-with-the-lcp",
     attribute: "basilwizi-teacher-training"
+  }, 
+  {
+    title: "Community Radio is the way Forward",
+    content: "Community radio creates a space for development and for people to share ideas. With more community radio stations in Zimbabwe people would be 'able to talk ...'",
+    link: "/basilwizi/previous-archived/basilwizi-community-radio-is-the-way-forward",
+    attribute: "basilwizi-community-radio-is-the-way-forward"
   },
   {
-    title: "Christmas Cheer for Basilwizi workforce",
-    content: "Christmas presents bring joy to the less privilidged nenbers of society in the River Valley. It was one of a kind. Best wishes for the new year coming ahead",
-    link: "/basilwizi/online-news/christmas-cheer",
-    attribute: "basilwizi-christmas-cheer-for-basilwizi-workforce"
-  },
-  {
-    title: "Basilwizi NANGO chairperson's Prize Award.",
-    content: "We are delighted to parade the National Association of Non-Governmental Organisations (NANGO) Chairperson's Prize of Excellence in Corporate Governance.",
-    link: "/basilwizi/online-news/nango-award",
-    attribute: "basilwizi-community-borehole"
+    title: "Director of Basilwizi evaluates in the rural areas",
+    content: "As a part of the monitoring & evaluation plan in Basilwizi the director attends reflection community meetings and workshops together with the project officers.",
+    link: "/basilwizi/previous-archived/basilwizi-frank-mudimba-engaging-in-discussion",
+    attribute: "basilwizi-frank-mudimba-engaging-in-discussion"
   },
   {
     title: "The Zambezi Valley Refrain",
-    content: "On the 13th of August 2016, the Tonga people witnessed a historic milestone of their life time, through participating in the launch of Basilwizi book 'The Zambezi Refrain, Lweendo LwaBasilwizi' and adopting the new 5 year strategic plan for Basilwizi.",
-    link: "/basilwizi/online-news/zambezi-refrain",
+    content: "On the 13th of August 2016, the Tonga people witnessed a historic milestone of their life time, through participating in the launch of Basilwizi book ...",
+    link: "/basilwizi/previous-archived/basilwizi-ngoma-buntibe-ceremony",
     attribute: "basilwizi-ngoma-buntibe-ceremony"
   },
   {
     title: "International day of the African child",
-    content: "On the occasion of the international day of the African child, Basilwizi remembers all those children abused by society, all the girls denied of education and other rights on the basis of culture, tradition, religion or race.",
-    link: "/basilwizi/online-news/day-of-african-child",
+    content: "On the occasion of the international day of the African child, Basilwizi remembers all those children abused by society ...",
+    link: "/basilwizi/previous-archived/basilwizi-international-day-of-the-african-child",
     attribute: "basilwizi-international-day-of-the-african-child"
   },
   {
     title: "Fishermen work together for better conditions",
-    content: "Paul Muleya (45) is a fisherman from the village Nsungwale in Binga district. He has made the seven hour long journey to meet with Basilwizi and to search for equipment for the group of fishermen he is representing.",
-    link: "/basilwizi/online-news/fishermen-work-together",
+    content: "Paul Muleya (45) is a fisherman from the village Nsungwale in Binga district. He has made the seven hour long journey to meet with Basilwizi and ...",
+    link: "/basilwizi/previous-archived/basilwizi-fishermen-work-together",
     attribute: "basilwizi-fishermen-work-together"
   }
 ];
- 
+
 const NewsBrief = () => {
   const theme = useTheme();
 
@@ -77,10 +77,10 @@ const NewsBrief = () => {
           width: 1,
           height: 1,
           display: "grid",
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: ['repeat(1, 1fr)','repeat(3, 1fr)'],
           columnGap: 2.5,
           rowGap: 2.5,
-          m: 4
+          p: 4
         }}
       >
         {
@@ -106,7 +106,7 @@ const NewsBrief = () => {
                   src={srcImg.img}
                   sx={{
                     width: 1,
-                    height: ["256","128px"]
+                    height: .6
                   }}
                   alt={srcImg.title}
                 />
@@ -115,7 +115,8 @@ const NewsBrief = () => {
                     color: "text.secondary",
                     fontSize: 17,
                     fontWeight: "bold",
-                    px: 3
+                    px: [1, 2],
+                    textOverflow: "ellipsis"
                   }}
                 >
                   {n.title}
@@ -123,9 +124,12 @@ const NewsBrief = () => {
                 <Box
                   sx={{
                     color: "text.secondary",
-                    fontSize: 13,
+                    fontSize: 12,
                     fontWeight: "medium",
-                    p: "6%"
+                    px: 2,
+                    textAlign: "justify",
+                    fontFamily: "Times New Roman",
+                    py: [3, 0]
                   }}
                 >
                   {n.content}
@@ -137,7 +141,7 @@ const NewsBrief = () => {
                     color: "text.secondary",
                     fontSize: 13,
                     fontWeight: "bold",
-                    p: 5,
+                    p: [1, 2],
                     textDecoration: "none",
                     "&:hover, &:focus": {
                       textDecoration: "underline dotted blue",

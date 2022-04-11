@@ -19,7 +19,13 @@ import NewsLayout from "../components/Layouts/newsLayout";
 import SignUp from "../account/signup";
 import ArchiveHeadlines from "./archives/heads";
 import ArchiveMain from "./archives/arch";
-import ForgotPassword from "../account/forgotPassword";
+import ProjectsEvaluation from "./publications/projectsEvaluation";
+import OtherDocuments from "./publications/others";
+import Newsletters from "./publications/newsletter";
+import AnnualReports from "./publications/annualReports";
+import MailingOrder from "./publications/mailing";
+import CurrentNewsletter from "./publications/newsletter/currentNewsletter";
+import ProgrammesIndex from "./programmes";
 
 const PagesIndex = () => {
   const routes = [
@@ -50,7 +56,7 @@ const PagesIndex = () => {
         },
         {
           path: "online-news",
-          element: <NewsLayout />,
+          element: <NewsLayout title="News Online" />,
           children: [
             {index: true, element: <NewsHeadlines />},
             {path: ":artId", element: <NewsArticle />}
@@ -61,17 +67,65 @@ const PagesIndex = () => {
           element: <AccountLayout />,
           children: [
             {index: true, element: <SignIn />},
-            {path: "signup", element: <SignUp />},
-            {path: "forgot-password", element: <ForgotPassword />}
+            {path: "signup", element: <SignUp />}
           ]
         },
         {
-          path: "archives",
-          element: <NewsLayout />,
+          path: "previous-archived",
+          element: <NewsLayout title="News Archives" />,
           children: [
             {index: true, element: <ArchiveHeadlines />},
             {path: ":arcId", element: <ArchiveMain />}
           ]
+        },
+        {
+          path: "project-evaluations",
+          element: <NewsLayout title="Project Evaluation" />,
+          children: [
+            {index: true, element: <ProjectsEvaluation />}
+          ]
+        },
+        {
+          path: "other-documents",
+          element: <NewsLayout title="Other Documents" />,
+          children: [
+            {index: true, element: <OtherDocuments />}
+          ]
+        },
+        {
+          path: "newsletter",
+          element: <NewsLayout title="Current Newsletter" />,
+          children: [
+            {index: true, element: <CurrentNewsletter />}
+          ]
+        },
+        /**
+         * Previous Copies availble online
+         */
+        {
+          path: "previous-issues",
+          element: <NewsLayout title="Archived Newsletter" />,
+          children: [
+            {index: true, element: <Newsletters />}
+          ]
+        },
+        {
+          path: "annual-reports",
+          element: <NewsLayout title="Annual Reports" />,
+          children: [
+            {index: true, element: <AnnualReports />}
+          ]
+        },
+        {
+          path: "order-yours",
+          element: <NewsLayout title="Order a copy" />,
+          children: [
+            {index: true, element: <MailingOrder />}
+          ]
+        },
+        {
+          path: ":id",
+          element: <ProgrammesIndex />,
         },
         {path: "*", element: <NotFound />}
       ]

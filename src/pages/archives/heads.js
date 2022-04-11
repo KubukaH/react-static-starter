@@ -65,7 +65,7 @@ const ArchiveHeadlines = () => {
             </Box>
             <Box
               component={Link}
-              to={`/basilwizi/archives/${head.attribute}`}
+              to={`/basilwizi/previous-archived/${head.attribute}`}
               sx={{
                 color: "text.secondary",
                 fontSize: 13,
@@ -83,44 +83,45 @@ const ArchiveHeadlines = () => {
     return (
       <Box
         sx={{
-          width: ["100%", 192, 256],
-          height: 256,
-          boxShadow: 3,
-          border: 0,
-          borderRadius: 0,
+          width: [256, 512],
+          height: 96,
+          boxShadow: 5,
+          borderBottomLeftRadius: "1024px",
+          borderBottomRightRadius: "1024px",
           m: "16px auto",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
+          alignItems: "center",
           bgcolor: alpha(theme.palette.background.basilwiziColor, .15),
           overflow: "hidden",
         }}
       >
         <Box 
-        sx={{ 
-          display: "flex", 
-          flexDirection: "row", 
-          width: "100%",
-          justifyContent: "space-between",
-          bgcolor: "background.basilwiziColor",
-          p: 2,
-        }}
+          sx={{ 
+            display: "flex", 
+            flexDirection: "row", 
+            width: "100%",
+            justifyContent: "center",
+            bgcolor: "background.basilwiziColor",
+            height: .3
+          }}
         >
           <Box
             sx={{
               color: "text.secondary",
               fontSize: 16,
               fontWeight: "bold",
-              overflow: "hidden"
             }}
           >
-            No results found
+            Empty results
           </Box>
           <IconButton
             title="Clear"
             aria-label="Clear"
             size="small"
-            style={{ visibility: searchText ? 'visible' : 'hidden' }}
+            sx={{ 
+              visibility: searchText ? 'visible' : 'hidden',
+            }}
             onClick={() => archiveSearch("")}
           >
             <ClearIcon fontSize="small" />
@@ -132,13 +133,10 @@ const ArchiveHeadlines = () => {
             fontSize: 16,
             fontWeight: "medium",
             p: 2,
-            overflow: "hidden",
-            height: "70%",
-            textAlign: "justify"
+            overflow: "hidden"
           }}
         >
-          The search yielded no results. For better results try different search terms, or suggest an article to the editor. Click the 
-          <code> X</code> button to clear this message.
+          The search yielded no results.
         </Box>
       </Box>
     )
@@ -152,11 +150,10 @@ const ArchiveHeadlines = () => {
         width: 1,
         height: 1,
         display: "grid",
-        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateColumns: ['repeat(1, 3fr)','repeat(3, 1fr)'],
         columnGap: 2.5,
         rowGap: 2.5,
         my: 4,
-        mx: 2
       }}
     >
       {postGrid()}

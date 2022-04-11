@@ -124,7 +124,7 @@ export default function GmailTreeView({ closeDrawer }) {
           labelInfo="90"
           color="#1a73e8"
           bgColor="#e8f0fe"
-          onClick={() => actionItem("/basilwizi/about/secretariat-and-management")}
+          onClick={() => actionItem("/basilwizi/about")}
         />
         <StyledTreeItem
           nodeId="8"

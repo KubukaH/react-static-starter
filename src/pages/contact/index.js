@@ -21,13 +21,13 @@ const ContactIndex = () => {
       <Box
         sx={{ 
           color: "text.base", 
-          fontSize: [18, 28, 32], 
-          fontWeight: "bold",
-          textDecoration: "underline",
+          fontSize: ["7vw", "3.5vw"], 
+          fontWeight: 300,
+          fontFamily: "Algerian", 
           mb: "16px"
         }}
       >
-        Contact Page
+        Contact Info
       </Box>
       <Box
         sx={{
@@ -35,7 +35,7 @@ const ContactIndex = () => {
           flexDirection: ["column", "row"],
           width: "100%",
           height: "100%",
-          border: "1px dotted #a0a465",
+          border: "0.25px dotted #a0a465",
           borderRadius: "16px",
           overflow: "hidden"
         }}

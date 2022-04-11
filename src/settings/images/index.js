@@ -27,6 +27,8 @@ import im23 from "../../tools/images/p19.jpg";
 import im24 from "../../tools/images/p20.jpg";
 import im25 from "../../tools/images/p21.jpg";
 import imr from "../../tools/images/p22.jpg";
+import ictl from "../../tools/images/ictl.png";
+import nwl from "../../tools/images/april15.png";
 import default_logo from "../../tools/images/logo-1.jpg";
 import basilwizi_office from "../../tools/images/Basilwizi_Binga_Office.jpg";
 import action_aid from "../../assets/img/sponsors/action_aid.jpg";
@@ -60,7 +62,7 @@ const IMAGES = [
     author: "Basilwizi Trust"
   },
   {
-    id: "basilwizi-participants-at-an-inception",
+    id: "basilwizi-participatory-local-governance-and-public-accountability-project",
     title: "Participants at an Inception and sensitisation meeting. Held at Mashala Primary School, in Mashala ward.",
     img: im5,
     author: "Basilwizi Trust"
@@ -72,7 +74,7 @@ const IMAGES = [
     author: "Basilwizi Trust"
   },
   {
-    id: "basilwizi-the-fishpond",
+    id: "basilwizi-integrated-aquaculture-agriculture-project",
     title:"The fishpond in the village Siabuwa in Binga District.",
     img: im17,
     author: "Basilwizi Trust",
@@ -122,7 +124,7 @@ const IMAGES = [
     author: "Basilwizi Trust",
   },
   {
-    id: "basilwizi-woorks-with-the-lcp",
+    id: "basilwizi-works-with-the-lcp",
     title:"Basilwizi works with the Language and Culture Project ",
     img: im14,
     author: "Basilwizi Trust",
@@ -134,7 +136,7 @@ const IMAGES = [
     author: "Basilwizi Trust",
   },
   {
-    id: "basilwizi-citizen-journalist-purity-munkuli",
+    id: "basilwizi-integrated-information-creation-access-and-sharing",
     title:"Citizen journalist Purity Munkuli reading a newspaper at a training in Saba ward.",
     img: im16,
     author: "Basilwizi Trust",
@@ -165,7 +167,7 @@ const IMAGES = [
     author: "Basilwizi Trust",
   },
   {
-    id: "basilwizi-titus-munsaka-farmer",
+    id: "basilwizi-health-HIV-and-AIDS-programme",
     title:"Titus Munsaka, Farmer and active community member.",
     img: im23,
     author: "Basilwizi Trust",
@@ -184,7 +186,7 @@ const IMAGES = [
     author: "Basilwizi Trust",
   },
   {
-    id: "basilwizi-luunga-ward-councilor-saina-muntanga",
+    id: "basilwizi-local-rights",
     title: "Luunga Ward Councillor - Saina Muntanga - emphasising a Point During Message Collection Training at Luunga Primary school reduced size",
     img: im25,
     author: "Basilwizi"
@@ -196,7 +198,7 @@ const IMAGES = [
     author: "Basilwizi Trust"
   },
   {
-    id: "community-radio-is-the-way-forward",
+    id: "basilwizi-community-radio-is-the-way-forward",
     title: "Community Radio is the way Forward",
     img: imr,
     author: "Basilwizi Trust"
@@ -278,6 +280,20 @@ const IMAGES = [
     author: "Basilwizi Default Logo",
     type: "logo"
   },
+  {
+    id: "basilwizi-ict-logo",
+    title: "Basilwizi ICT Promotion Logo",
+    img: ictl,
+    author: "Basilwizi Projects",
+    type: "logo"
+  },
+  {
+    id: "basilwizi-newsletter-april-2015",
+    title: "Basilwizi ICT Promotion Logo",
+    img: nwl,
+    author: "Basilwizi News",
+    type: "logo"
+  }
 ];
 
 function getImageById(id){

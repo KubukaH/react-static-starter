@@ -12,8 +12,8 @@ const menuOptions = [
         url: "/basilwizi/online-news"
       },
       {
-        name: "What's happening in Binga",
-        url: "/basilwizi/online-news"
+        name: "Previus Archived",
+        url: "/basilwizi/previous-archived"
       },
       {
         name: "News from accross the river",
@@ -29,12 +29,12 @@ const menuOptions = [
         url: "/basilwizi/newsletter"
       },
       {
-        name: "Archives",
-        url: "/basilwizi/archives"
+        name: "Previous Issues",
+        url: "/basilwizi/previous-issues"
       },
       {
         name: "Order yours today",
-        url: "/basilwizi/newsletter"
+        url: "/basilwizi/order-yours"
       },
     ]
   },

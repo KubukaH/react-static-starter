@@ -9,10 +9,10 @@
      title: "Basilwizi hands over state of the art computers to Binga community Library",
      content: <>
        <p>
-         On the 27th of October 2011, Basilwizi handed over the Public Access Point (PAP) at Binga Library to Binga Rural District Council in a bid to improve information access in the district. Basilwizi is an organisation operating in Binga with an objective of developing Tonga communities. It has taken over the Tonga.Online project after it was realised that its funding base has dwindled. The Public Access Point will afford the local community access to information through internet services. The Binga Rural District Council accommodated the PAP facilities in the community library for convenience of the local population.
+        On the 27th of October 2011, Basilwizi handed over the Public Access Point (PAP) at Binga Library to Binga Rural District Council in a bid to improve information access in the district. Basilwizi is an organisation operating in Binga with an objective of developing Tonga communities. It has taken over the Tonga.Online project after it was realised that its funding base has dwindled. The Public Access Point will afford the local community access to information through internet services. The Binga Rural District Council accommodated the PAP facilities in the community library for convenience of the local population.
        </p>
        <p>
-         The Tonga.Online project was started in 2001 and experienced some management problems in early 2011. It was taken over by Basilwizi who today have seen it good to hand over the PAP facilities to the Rural District Council to provide for true ownership. Basilwizi have decided to make this project a prerogative of the Rural District Council. Thus, ten computers were handed over.
+        The Tonga.Online project was started in 2001 and experienced some management problems in early 2011. It was taken over by Basilwizi who today have seen it good to hand over the PAP facilities to the Rural District Council to provide for true ownership. Basilwizi have decided to make this project a prerogative of the Rural District Council. Thus, ten computers were handed over.
        </p>
        <p>
          Speaking on behalf of the Austria-Zimbabwe Friendship Association (AZFA), the visiting IT expert Rupi Ruprechtsberger explained how Information Technology could play a crucial role in cultural development of the BaTonga people.
@@ -33,14 +33,14 @@
          At the same occasion, Rupi was handing over one of several donated text books to Mr Barnabas B. Munkuli of Binga Rural District Council. These books will be put up in the Community library which houses PAP facilities.
        </p>
        </>,
-     attribute: "basilwizi-woorks-with-the-lcp"
+     attribute: "basilwizi-works-with-the-lcp"
    },
    {
      title: "Community Radio is the way Forward",
-     attribute: "community-radio-is-the-way-forward",
+     attribute: "basilwizi-community-radio-is-the-way-forward",
      content: <>
        <p>
-         Community radio creates a space for development and for people to share ideas. With more community radio stations in Zimbabwe people would be "able to talk about the prices of Kapenta fish in the community of Kariba, price of timber in the community of Tsholotsho, the price of bream in Binga [...]", Programmes Officer for Zimbabwe Association of Community Radio Stations (ZACRAS), Kudzai Kwangwari writes.
+        Community radio creates a space for development and for people to share ideas. With more community radio stations in Zimbabwe people would be "able to talk about the prices of Kapenta fish in the community of Kariba, price of timber in the community of Tsholotsho, the price of bream in Binga [...]", Programmes Officer for Zimbabwe Association of Community Radio Stations (ZACRAS), Kudzai Kwangwari writes.
        </p>
        <p>
          Community radio is a way of giving people access to information, but also a possibility for people to share knowledge and Kudzai argue that it has a huge potential, including the economically potential referred to in the quote. Click on the link below to read the whole article about community radio.
@@ -55,7 +55,7 @@
      content:
        <>
        <p>
-         As a part of the monitoring & evaluation plan in Basilwizi the director attends reflection community meetings and workshops together with the project officers. Director Frank Mudimba attended the recent community reflection meeting in Nenyunga in Gokwe North. “It is very good to be part of these meetings, as you will be able to see the gaps in our work,” says Frank Mudimba.
+        As a part of the monitoring & evaluation plan in Basilwizi the director attends reflection community meetings and workshops together with the project officers. Director Frank Mudimba attended the recent community reflection meeting in Nenyunga in Gokwe North. “It is very good to be part of these meetings, as you will be able to see the gaps in our work,” says Frank Mudimba.
        </p>
        <p>
          He was pleased to see both the councillor and the local chief attending the reflection meeting. Basilwizi is consistently working to include the local leadership in meetings, trainings and workshops to build good relationships with the local communities and as well entrench the values of Basilwizi in the community for sustainability purposes. A village head at the meeting talked enthusiastically about Basilwizi’s work raising awareness about the constitution and specifically children’s rights. Though Frank was happy to hear the participants praising the efforts of Basilwizi he was also missing some topics in the discussion. “I’m glad that they are praising us for focusing on the teaching of Tonga in schools and for our efforts in raising awareness on the constitution. But I missed a detailed discussion about the residents’ rights to self-expression, their rights to service deliveries, their rights to natural resources and other basic rights,” Frank explains concluding that we still have a lot of work to do in the area.

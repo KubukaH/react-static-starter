@@ -71,7 +71,7 @@ const ForgotPassword = () => {
         >
           <Box
             component={Link}
-            to="signup"
+            to="/basilwizi/accounts/signup"
             sx={{
               color: "text.primary",
               fontSize: 11,
@@ -119,9 +119,9 @@ const ForgotPassword = () => {
                 alertService.clear();
                 load(requestPasswordRecovery(email))
                   .then((user) => {
-                    alertService.success("Welcome!", { keepAfterRouteChange: true });
+                    alertService.success("Check your email!", { keepAfterRouteChange: true });
                     setSubmitting(false);
-                    navigate("/", { replace: true });
+                    navigate("/acouonts/login", { replace: true });
                   })
                   .catch((error) => {
                     setSubmitting(false);

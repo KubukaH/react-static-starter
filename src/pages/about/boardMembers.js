@@ -81,8 +81,11 @@ const BoardMembers = () => {
     >
       <Box 
         sx={{ 
-          color: "text.primary", fontSize: 28, fontWeight: "medium",
-          textDecoration: "underline", textAlign: "center"
+          color: "text.base", 
+          fontSize: ["7vw", "3.5vw"], 
+          fontWeight: 300,
+          textAlign: "center",
+          fontFamily: "Algerian",
         }} 
       >
         Board Members

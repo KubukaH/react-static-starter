@@ -75,11 +75,11 @@ const config = {
         use: [stylesHandler, "css-loader", "postcss-loader", "less-loader"],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|pdf|xls)$/i,
         type: "asset",
       },
       {
-        test: /\.(png|svg|jpdg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpdg|jpeg|gif|pdf|xls)$/i,
         type: 'asset/resource'
       },
       {

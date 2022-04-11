@@ -139,31 +139,31 @@ function OpenMoreDialogOne(props) {
 
 const dataObjectives = [
   {
-    title: "One",
+    title: "Objective I",
     descr: "To empower the affected people to advocate for developmental changes and their inclusion in decision making processes on issues that affect their development particularly the use of resources around / from Lake Kariba"
   },
   {
-    title: "Two",
+    title: "Objective II",
     descr: "To assist the beneficiaries to improve their socio-economic well being, through the establishment of people centred development projects that meet the basic material needs"
   },
   {
-    title: "Three",
+    title: "Objective III",
     descr: "To facilitate the putting in place of legislation, policies, procedures and practices that enhance the capacity of men and women to access, utilise and control their natural resources"
   },
   {
-    title: "Four",
+    title: "Objective IV",
     descr: "To promote the cultural and educational development of the beneficiaries"
   },
   {
-    title: "Five",
+    title: "Objective V",
     descr: "To combat and reduce the impact of HIV/AIDS pandemic through community based intervention strategies"
   },
   {
-    title: "Six",
+    title: "Objective VI",
     descr: "To promote gender, child protection and disability mainstreaming in all programme activities of the organisation"
   },
   {
-    title: "Seven",
+    title: "Objective VII",
     descr: "To enhance organisational capacity and ensure effective implementation of Basilwizi goals."
   },
 ];
@@ -300,6 +300,7 @@ const MissionStatement = () => {
         }}
       >
         <Box
+          id="#vision"
           sx={{
             width: "100%",
             height: "100%",
@@ -343,6 +344,7 @@ const MissionStatement = () => {
         }}
       >
         <Box
+          id="#mission"
           sx={{
             width: "100%",
             height: "100%",
@@ -385,6 +387,7 @@ const MissionStatement = () => {
         }}
       >
         <Box
+          id="#motto"
           sx={{
             width: "100%",
             height: "100%",
@@ -428,6 +431,7 @@ const MissionStatement = () => {
         }}
       >
         <Box
+          id="#core-values"
           sx={{
             width: "100%",
             height: "100%",
@@ -471,6 +475,7 @@ const MissionStatement = () => {
         }}
       >
         <Box
+          id="#objectives"
           sx={{
             width: "100%",
             height: "100%",
@@ -514,6 +519,7 @@ const MissionStatement = () => {
         }}
       >
         <Box
+          id="#mandate"
           sx={{
             width: "100%",
             height: "100%",
