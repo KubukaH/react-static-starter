@@ -125,7 +125,7 @@ export default function GmailTreeView({ closeDrawer }) {
           color="#1a73e8"
           bgColor="#e8f0fe"
           onClick={() => actionItem("/basilwizi/about")}
-        />
+        /> 
         <StyledTreeItem
           nodeId="8"
           labelText="Board Members"
@@ -154,7 +154,7 @@ export default function GmailTreeView({ closeDrawer }) {
             labelInfo="90"
             color="#1a73e8"
             bgColor="#e8f0fe"
-            onClick={() => actionItem("/basilwizi/governance-and-accountability")}
+            onClick={() => actionItem("/basilwizi/participatory-local-governance-and-public-accountability-project")}
           />
           <StyledTreeItem
             nodeId="21"
@@ -172,7 +172,7 @@ export default function GmailTreeView({ closeDrawer }) {
             labelInfo="90"
             color="#1a73e8"
             bgColor="#e8f0fe"
-            onClick={() => actionItem("/basilwizi/women-empowerment")}
+            onClick={() => actionItem("/basilwizi/women-economic-empowerment-project")}
           />
 
         </StyledTreeItem>
@@ -184,7 +184,7 @@ export default function GmailTreeView({ closeDrawer }) {
             labelInfo="2,294"
             color="#e3742f"
             bgColor="#fcefe3"
-            onClick={() => actionItem("/basilwizi/language-and-culture")}
+            onClick={() => actionItem("/basilwizi/language-and-culture-project")}
           />
           <StyledTreeItem
             nodeId="24"
@@ -193,7 +193,7 @@ export default function GmailTreeView({ closeDrawer }) {
             labelInfo="2,294"
             color="#e3742f"
             bgColor="#fcefe3"
-            onClick={() => actionItem("/basilwizi/tonga-online")}
+            onClick={() => actionItem("/basilwizi/tonga-online-project")}
           />
           <StyledTreeItem
             nodeId="25"
@@ -202,7 +202,7 @@ export default function GmailTreeView({ closeDrawer }) {
             labelInfo="2,294"
             color="#e3742f"
             bgColor="#fcefe3"
-            onClick={() => actionItem("/basilwizi/information-creation-access-and-sharing")}
+            onClick={() => actionItem("/basilwizi/integrated-information-creation-access-and-sharing")}
           />
         </StyledTreeItem>
         <StyledTreeItem nodeId="12" labelText={"Livelihoods"} labelIcon={Label}>
@@ -213,7 +213,7 @@ export default function GmailTreeView({ closeDrawer }) {
             labelInfo="3,566"
             color="#a250f5"
             bgColor="#f3e8fd"
-            onClick={() => actionItem("/basilwizi/integrated-acquaculture-agriculture")}
+            onClick={() => actionItem("/basilwizi/integrated-aquaculture-agriculture-project")}
           />
           <StyledTreeItem
             nodeId="27"
@@ -222,7 +222,7 @@ export default function GmailTreeView({ closeDrawer }) {
             labelInfo="3,566"
             color="#a250f5"
             bgColor="#f3e8fd"
-            onClick={() => actionItem("/basilwizi/protracted-relief-projects")}
+            onClick={() => actionItem("/basilwizi/protracted-relief-projects-binga-and-gokwe-north")}
           />
           <StyledTreeItem
             nodeId="28"
@@ -241,7 +241,7 @@ export default function GmailTreeView({ closeDrawer }) {
           labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
-          onClick={() => actionItem("/basilwizi/hiv-aids-programme")}
+          onClick={() => actionItem("/basilwizi/health-HIV-and-AIDS-programme")}
         />
       </StyledTreeItem>
       <StyledTreeItem nodeId="4" labelText="Publications" labelIcon={Label}>
@@ -270,7 +270,7 @@ export default function GmailTreeView({ closeDrawer }) {
           labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
-          onClick={() => actionItem("/basilwizi/archives")}
+          onClick={() => actionItem("/basilwizi/previous-issues")}
         />
         <StyledTreeItem
           nodeId="18"
