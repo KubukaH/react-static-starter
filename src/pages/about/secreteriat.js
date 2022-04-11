@@ -80,14 +80,14 @@ const Secretariat = () => {
             fontSize: 16, fontWeight: "medium", color: "text.primary"
           }}
         >
-          Danisa Mudimba
+          Christopher Mweembe
         </Box>
         <Box
           sx={{
             fontSize: 12, fontWeight: "medium", color: "text.primary"
           }}
         >
-          (danisam@basilwizi.co.zw)
+          (christopherm@basilwizi.co.zw)
         </Box>
       </Box>
       <Box
