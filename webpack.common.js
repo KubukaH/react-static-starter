@@ -9,8 +9,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Basilwizi trust - Bamulonga (People of the Great River)',
-      template: "./src/index.html",
+      title: 'Basilwizi Trust - Bamulonga (People of the Great River)',
+      template: "./public/index.html",
     }),
   ],
   output: {

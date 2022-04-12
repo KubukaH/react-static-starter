@@ -38,3 +38,4 @@ Visit the  [React-Static Github Repo](https://github.com/nozzle/react-static)!
 - [Apollo & Redux](https://github.com/nozzle/react-static/tree/master/examples/apollo-redux)
 - [TypeScript](https://github.com/nozzle/react-static/tree/master/examples/typescript)
 - [Cordova (Hybrid App)](https://github.com/nozzle/react-static/tree/master/examples/cordova)
+- [FAVICON](https://www.favicon.cc/?)

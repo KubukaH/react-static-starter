@@ -31,15 +31,13 @@ const Newsletters = () => {
                 fontSize: 12, fontWeight: 150, color: "#a0a465", p: 2
               }}
             >{prj.title}</Box>
-            <Box
+            <Button
+              component="a"
+              href={prj.item}
+              download
             >
-              <Button 
-                type="button"
-                aria-label="Download file"
-              >
-                💾
-              </Button>
-            </Box>
+              💾
+            </Button>
           </Box>
         ))
       }

@@ -28,7 +28,7 @@ const NewsLayout = ({ title }) => {
           sx={{
             color: "text.base",
             fontWeight: 200,
-            fontSize: 40,
+            fontSize: ["7.6vw", "3.5vw"],
             fontFamily: "Elephant Regular"
           }}
         >
@@ -49,7 +49,7 @@ const NewsLayout = ({ title }) => {
           sx={{
             color: "text.base",
             fontWeight: 200,
-            fontSize: 40,
+            fontSize: "2.5vw",
             fontFamily: "Elephant Regular",
             ml: 5,
             display: { xs: "none", md: "block" }
@@ -74,7 +74,7 @@ const NewsLayout = ({ title }) => {
           component="img"
           src={image.img}
           alt="LogoICT"
-          sx={{ width: .20, height: 1 }}
+          sx={{ width: .20, height: 1, display: ["none", "flex"] }}
         />
         <Box
           sx={{

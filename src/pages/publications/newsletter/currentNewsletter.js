@@ -2,9 +2,11 @@ import * as React from "react";
 
 import Box from "@mui/material/Box";
 import { getImageById } from "../../../settings/images";
+import { getNewsLetterById } from "../../../settings/pdfs/newsletterPdfs";
 
 const CurrentNewsletter = () => {
   const image = getImageById("basilwizi-newsletter-april-2015");
+  const nwl = getNewsLetterById("april-2015");
   return (
     <Box
       sx={{
@@ -18,15 +20,29 @@ const CurrentNewsletter = () => {
         mx: "auto"
       }}
     >
-      <Box
-        component="img"
-        src={image.img}
-        alt="Current Issue"
-        sx={{
-          width: .5,
-          m: ["auto", 0]
-        }}
-      />
+      <Box className="container">
+        <Box
+          component="img"
+          className="image"
+          src={image.img}
+          alt="Current Issue"
+          sx={{
+            width: 1,
+            m: ["auto", 0]
+          }}
+        />
+        <Box
+          component="a"
+          href={nwl.item}
+          download={nwl.title}
+          className="middle"
+          sx={{
+            textDecoration: "none"
+          }}
+        >
+          <Box component="img" src={image.img} sx={{ width: 0.25 }} />
+        </Box>
+      </Box>
       <Box
         sx={{
           display: "flex",

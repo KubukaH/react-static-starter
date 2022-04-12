@@ -1,17 +1,51 @@
 import * as React from "react";
+import cm from "../../tools/images/chioneso_mudenda.jpg";
 
 const tdata = [
   {
     p: "340 farmers trained and engaged  in conservation farming methods to  increase food security by close of project.",
-    a: "Seed fairs"
+    a: "Seed fairs",
+    ch: [
+      {
+        b: "Seed fairs", m: "", f: "", t: "2,369"
+      },
+      {
+        c: "Open voucher system (GSID )", m: "", f: "", t: "710"
+      },
+      {
+        d: "Conservation Farmers - trainings on basic principles", m: "", f: "", t: "460"
+      }
+    ]
   },
   {
     p: "Build capacities of 450 community members in community based planning to implement relevant developmental plans to their needs",
-    a: "Trained Village Agricultural Production Facilitators, Training on gender mainstreaming, advocacy and protection (these were conducted during in all livelihoods project activities"
+    a: "Trained Village Agricultural Production Facilitators, Training on gender mainstreaming, advocacy and protection (these were conducted during in all livelihoods project activities",
+    ch: [
+      {
+        b: "Trained Village Agricultural Production Facilitators", m: "", f: "", t: "4"
+      },
+      {
+        c: "Training on gender mainstreaming, advocacy and protection (these were conducted during in all livelihoods project activities", m: "", f: "", t: "2049"
+      }
+    ]
   },
   {
     p: "Animal health improved by constructing three spray bays for livestock dipping in the two chiefdoms of Simuchembu and Nenyunga by 2011.",
-    a: "Rehabilitated 2 dip tanks, Constructed a holding pen for in Simuchembu"
+    a: "Rehabilitated 2 dip tanks, Constructed a holding pen for in Simuchembu",
+    ch: [
+      {
+        b: "Constructed a holding pen for in Simuchembu", m: "", f: "", t: "2400"
+      },
+      {
+        c: "Training of small livestock beneficiaries", m: "", f: "", t: "114"
+      },
+      {
+        d: "Distribution of small livestock", m: "", f: "", t: "114"
+      },
+      {
+        e: "Distribution of vet drugs", m: "", f: "", t: ""
+      }
+    ]
   },
   {
     p: "Secured educational rights of OVC in Gokwe North (Simuchembu & Nenyunga)",
@@ -19,11 +53,54 @@ const tdata = [
   },
   {
     p: "Households are accessing safe and clean water and pump minders trained and are able to carry out basic borehole maintenance",
-    a: "Rehabilitated 14 boreholes (12 in Simuchembu and 2 in Nenyunga Wards), Repaired 1 borehole"
+    a: "Rehabilitated 14 boreholes (12 in Simuchembu and 2 in Nenyunga Wards), Repaired 1 borehole",
+    ch: [
+      {
+        b: "Rehabilitated 14 boreholes (12 in Simuchembu and 2 in Nenyunga Wards)"
+      },
+      {
+        c: "Repaired 1 borehole"
+      },
+      {
+        d: "Training of builders for the construction of water troughs", m: "0", f: "17", t: "17"
+      },
+      {
+        e: "Pump minders kits and protective clothing", m: "0", f: "2", t: "2"
+      },
+      {
+        f: "Water Point Committee members training", m: "26", f: "48", t: "74"
+      },
+    ]
   },
   {
     p: "Nutritional needs and incomes for the elderly and the children, especial those affected by HIV and AIDS, enhanced through the provision of better managed community gardens.",
-    a: "Established 4 community gardens, Established 50 individual gardens, Adopted 2 community gardens from Christian Care, At least 4 new and 9 old nutrition gardens (NGs) were supported with fencing materials and tools. Established compost heaps for permaculture"
+    a: "Established 4 community gardens, Established 50 individual gardens, Adopted 2 community gardens from Christian Care, At least 4 new and 9 old nutrition gardens (NGs) were supported with fencing materials and tools. Established compost heaps for permaculture",
+    ch: [
+      {
+        b: "Established 4 community gardens"
+      },
+      {
+        c: "Established 50 individual gardens"
+      },
+      {
+        d: "Adopted 2 community gardens from Christian Care", m: "80", f: "20", t: "100"
+      },
+      {
+        e: "At least 4 new and 9 old nutrition gardens (NGs) were supported with fencing materials and tools. Established compost heaps for permaculture", m: "31", f: "29", t: "60"
+      },
+      {
+        f: "Training of garden management", m: "112", f: "49", t: "161"
+      },
+      {
+        g: "Training on solar drier utilisation", m: "112", f: "49", t: "161"
+      },
+      {
+        h: "Garden Days", m: "160", f: "90", t: "250"
+      },
+      {
+        i: "Nutrition Education", m: "80", f: "17", t: "97"
+      }
+    ]
   }
 ];
 
@@ -150,11 +227,18 @@ const ProgrammesData = [
           <li>Cultural support through restoration of the norms, beliefs and values using cultural festivals that brings participants from across the lake.
         Inter-schools competitions where children will use drama and poetry to campaign against cultural barriers that limit women and female youths in accessing education.</li>
           <li>Support TOLACO and Ministry of Education Officials in monitoring the quality of teaching of ChiTonga in Schools.</li>
-          <li>Networking and information sharing between the Zambia and Zimbabwe Tonga for cultural exchanges and to share teaching resources
-        chioneso mudendaOne of the beneficiaries of the Secondary Education Support Programmes, Chioneso Mudenda, Form 4, of Tyunga Secondary School pictured here with guardian – grandmother, Ms Margaret Mudenda (61), at their homestead. The grandmother had these words to say, “Chioneso could have been married by now had it not been the fees rescue she got from well-wishers through Basilwizi. I am happy now she is no longer being chased away by school authorities for non payment of fees. Her school attendance has improved”.</li>
+          <li>
+            Networking and information sharing between the Zambia and Zimbabwe Tonga for cultural exchanges and to share teaching resources.
+            One of the beneficiaries of the Secondary Education Support Programmes is chioneso mudenda. 
+            <br/>
+            <img src={cm} alt="Chioneso" style={{ float: "left", margin: "12px" }} />
+            Chioneso Mudenda, Form 4, of Tyunga Secondary School pictured here with guardian – grandmother, Ms Margaret Mudenda (61), at their homestead.
+            The grandmother had these words to say, <i>“Chioneso could have been married by now had it not been the fees rescue she got from well-wishers through Basilwizi. I am happy now she is no longer being chased away by school authorities for non payment of fees. Her school attendance has improved”.</i>
+          </li>
         </ul>
-
-        <b>NB:</b> However, the project does not have funding. It has been relying on budget lines from other programmes for all the notable achievements which could have been double this.
+        <br/>
+        <p>
+        <b>NB:</b> However, the project does not have funding. It has been relying on budget lines from other programmes for all the notable achievements which could have been double this.</p>
       </div>
   },
   {
@@ -169,7 +253,7 @@ const ProgrammesData = [
 
         Key target group of the project are about 100 facilitators in charge of 8 existing and two ITCs in Binga district, people who are managing these facilities and/or using them for educational purposes.  Therefore the project is reaching out to cover all ten Secondary schools in Binga district.  Furthermore it is addressing some selected Primary (Feeder) Schools like Siachilaba, Siansundu and Binga. This beneficiary group encompasses a total of 8.027 pupils and about 300 teachers. For some activities, Sinazongwe Basic School and Maliko group on the Zambian shore of Lake Kariba are also participating.The wider communities of Binga, Siansundu, Siachilaba, Manjolo, Tinde, Pashu, Kariyangwe, Siabuwa and Lusulu, where ITCs are established, are direct and indirect beneficiaries and taking on responsibility by ownership of the relevant ITCs via their School Development Committees.<br/><br/>
 
-        Special attention will be given to:<br/><br/>
+        Special attention will be given to:
         <ul>
           <li>Girls, Children, Women / women groups like the basket weaving women associations</li>
           <li>People living with HIV/AIDS</li>
@@ -186,7 +270,7 @@ const ProgrammesData = [
     imgDsc: "Citizen journalist Purity Munkuli reading a newspaper at a training in Saba ward.",
     dat:
       <div>
-        The INCREASH project aims at enhancing community led information creation, access and sharing using various media tools including, but not limited to, ICTs, press, radio and peer interactions. Through this project Basilwizi seeks to enhance freedom of expression, association and the right to information. Basilwizi believes that development or lack thereof is mainly a result of limited access to information that ultimately inhibits freedom of expression and democratic participation of communities in the Zambezi valley. Therefore, enhanced information access, creation and sharing are keys to citizen’s participation in the democratic governance of the country. Through this project, Basilwizi works to ensure that the residents of the Zambezi valley are informed of both their rights and obligations as citizens of Zimbabwe for them to be able to contribute meaningfully to their own development.<br/><br/>
+        The INCREASH project aims at enhancing community led information creation, access and sharing using various media tools including, but not limited to, ICTs, press, radio and peer interactions. Through this project Basilwizi seeks to enhance freedom of expression, association and the right to information. Basilwizi believes that development or lack thereof is mainly a result of limited access to information that ultimately inhibits freedom of expression and democratic participation of communities in the Zambezi valley. Therefore, enhanced information access, creation and sharing are keys to citizen’s participation in the democratic governance of the country. Through this project, Basilwizi works to ensure that the residents of the Zambezi valley are informed of both their rights and obligations as citizens of Zimbabwe for them to be able to contribute meaningfully to their own development.
         <h3>Goal</h3>
 
         The overall goal of the project is topromote community participation, freedom of expression and access to information in Binga and Sinazongwe districts of the Zambezi Valley. The project will contribute to an informed, interactive and engaged Zambezi Valley community.
@@ -232,18 +316,23 @@ const ProgrammesData = [
 
         <h3>Progress towards outputs and results of the project</h3>
         There have been important positive changes in the lives of the people in general as a result of the PRP II interventions in Gokwe North and Binga. So far, most significant changes recorded show changes on diet, in agronomic practice, in income and in social status for vulnerable and poor people. In general, household food security and nutrition have been enhanced through sustainable and improved productivity as a result of the programme. During the reporting period from January to December, the summarised progress against the milestones is shown in tabular form below.
-        <table border style={{ width: "100%" }}>
+        <table style={{ width: "100%", fontSize: "11px" }}>
           <thead>
             <tr>
-              <td>
+              <th rowSpan={2}>
                 Project outputs
-              </td>
-              <td>
+              </th>
+              <th rowSpan={2}>
                 Activity
-              </td>
-              <td>
-                This Perios
-              </td>
+              </th>
+              <th colSpan={3}>
+                This Period
+              </th>
+            </tr>
+            <tr>
+              <th>M</th>
+              <th>F</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
@@ -256,6 +345,8 @@ const ProgrammesData = [
                   <td>
                     {d.a}
                   </td>
+                  <td></td>
+                  <td></td>
                   <td></td>
                 </tr>
               ))

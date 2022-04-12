@@ -68,7 +68,7 @@ const ProgrammesIndex = () => {
           >
             {project.id.split("-").map(x => x).join(" ").toUpperCase()}
           </Box>
-          <Box sx={{ color: "#fff", width: "30px", border: 0.5, m: 1, alignItems: "center" }} >
+          <Box sx={{ color: "#fff", width: "30px", border: 0.5, m: 1, textAlign: "center" }} >
             <RuleOutlinedIcon />
           </Box>
         </Box>
