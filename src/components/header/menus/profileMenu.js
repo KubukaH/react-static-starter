@@ -9,15 +9,40 @@ import { useCTX } from '../../context';
 const ProfileMenu = () => {
   const navigate = useNavigate();
   const auth = useCTX();
-  const { signout, user } = auth;
-  console.log(user.firstName);
+  const { logoutUser, user, isLoggedIn } = auth;
 
-  if(!user) return null;
+  if(!isLoggedIn) return (
+    <Box className="dropdown">
+      <Box 
+        className="dropbtn"
+      >
+        Login
+      </Box>
+      <Box className="dropdown-content">
+        <Box className="header">
+          <Box
+            sx={{
+              fontSize: 20,
+              color: "#fff",
+              fontWeight: "bold",
+              float: "right",
+              textDecoration: "none",
+              height: "auto"
+            }}
+            component={Link}
+            to="/basilwizi/accounts"
+          >
+            Login or Signup for more 
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
 
   return (
     <Box className="dropdown">
       <Box className="dropbtn">
-        {user.firstName}
+        {user.email.slice(0,7)}
       </Box>
       <Box className="dropdown-content">
         <Box className="header">
@@ -28,7 +53,7 @@ const ProfileMenu = () => {
               fontWeight: "bold"
             }}
           >
-            Basilwizi Trust - Signed In as {user.firstName+ ' ' +user.lastName}
+            Basilwizi Trust - Signed In as {user.email}
           </Box>
         </Box>
         <Box className="row">
@@ -59,9 +84,9 @@ const ProfileMenu = () => {
               Delete Account
             </Box>
             <Box
-              onClick={() => signout(navigate("/", {replace: true}))}
-              component={Link}
-              to="#"
+              onClick={logoutUser}
+              component="a"
+              href="#"
             >
               Sign Out
             </Box>

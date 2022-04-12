@@ -43,6 +43,7 @@ const socialMedia = [
 const PagesLayout = () => {
   const theme = useTheme();
   const auth = useCTX();
+  const { isLoggedIn } = auth;
 
   return (
     <Box
@@ -187,7 +188,7 @@ const PagesLayout = () => {
               }
             </Box>
             {
-              !auth.user &&
+              !isLoggedIn &&
               <Box
                 sx={{
                   display: "flex",

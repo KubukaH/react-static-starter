@@ -14,6 +14,7 @@ import PartnersMenu from './menus/partnersMenu';
 import ContactMenu from './menus/contactMenu';
 import HomeMenu from './menus/homeMenu';
 import ToggleDrawer from './drawer';
+import ProfileMenu from './menus/profileMenu';
 // import ProfileMenu from './menus/profileMenu';
 
 const navs = [
@@ -41,10 +42,10 @@ const navs = [
     item: <ContactMenu />,
     base: 'six'
   },
-  /*{
+  {
     item: <ProfileMenu />,
     base: 'seven'
-  }*/
+  }
 ];
 
 function ElevationScroll({ children }) {

@@ -16,7 +16,7 @@ import {
 import { alertService } from "../_services";
 import AccountIndex from ".";
 import { useCTX } from "../components/context";
-import { auth } from "../lambda/auth";
+import useLoading from "../components/extras/loading";
 
 const MyTextField = ({label, ...props}) => {
   const [field, meta] = useField(props);
@@ -88,8 +88,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  const [isLoading, load] = useLoading();
   const ctx = useCTX();
   const navigate = useNavigate();
+  const { signupUser } = ctx;
 
   return (
     <AccountIndex
@@ -153,16 +155,16 @@ const SignUp = () => {
               validationSchema={validationSchema}
               onSubmit={(fields, { setSubmitting }) => {
                 alertService.clear();
-                auth
-                  .signup(fields)
-                  .then((response) => {
-                    console.log('Confirmation email sent', response);
-                    alertService.success("COnfirmation sent");
+                load(signupUser(fields))
+                  .then((user) => {
                     setSubmitting(false);
+                    alertService.success("Check email for instructions", {
+                      keepAfterRouteChange: true
+                    });
                     navigate("/basilwizi/accounts");
                   })
                   .catch((error) => {
-                    console.log("It's an error", error);
+                    alertService.error(error);
                     setSubmitting(false);
                   });
               }}
@@ -219,7 +221,7 @@ const SignUp = () => {
                         type="submit"
                         variant="outlined"
                         color="primary"
-                        loading={isSubmitting}
+                        loading={isSubmitting || isLoading}
                       >
                         Sign In
                       </Button>

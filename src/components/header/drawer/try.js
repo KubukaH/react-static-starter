@@ -22,6 +22,9 @@ import ChromeReader from '@mui/icons-material/ChromeReaderModeTwoTone';
 import PermContactCalendar from '@mui/icons-material/PermContactCalendarTwoTone';
 import StoreTwoToneIcon from '@mui/icons-material/StoreTwoTone';
 import AddTaskIcon from '@mui/icons-material/AddTask';
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+
+import { useCTX } from '../../context';
 
 const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
   color: theme.palette.text.secondary,
@@ -96,6 +99,8 @@ StyledTreeItem.propTypes = {
 
 export default function GmailTreeView({ closeDrawer }) {
   const navigate = useNavigate();
+  const ctx = useCTX();
+  const { isLoggedIn, user, logoutUser } = ctx;
 
   const actionItem = (s) => {
     closeDrawer();
@@ -118,7 +123,7 @@ export default function GmailTreeView({ closeDrawer }) {
       />
       <StyledTreeItem nodeId="2" labelText="About us" labelIcon={Label}>
         <StyledTreeItem
-          nodeId="7"
+          nodeId="8"
           labelText="Secretariat and Management"
           labelIcon={InfoIcon}
           labelInfo="90"
@@ -127,7 +132,7 @@ export default function GmailTreeView({ closeDrawer }) {
           onClick={() => actionItem("/basilwizi/about")}
         /> 
         <StyledTreeItem
-          nodeId="8"
+          nodeId="9"
           labelText="Board Members"
           labelIcon={InfoIcon}
           labelInfo="90"
@@ -136,7 +141,7 @@ export default function GmailTreeView({ closeDrawer }) {
           onClick={() => actionItem("/basilwizi/about/board-members")}
         />
         <StyledTreeItem
-          nodeId="9"
+          nodeId="10"
           labelText="Advisory council"
           labelIcon={InfoIcon}
           labelInfo="90"
@@ -146,7 +151,7 @@ export default function GmailTreeView({ closeDrawer }) {
         />
       </StyledTreeItem>
       <StyledTreeItem nodeId="3" labelText={"Programmes & Projects"} labelIcon={Label}>
-        <StyledTreeItem nodeId="10" labelText={"Programmes & Projects"} labelIcon={Label}>
+        <StyledTreeItem nodeId="11" labelText={"Programmes & Projects"} labelIcon={Label}>
           <StyledTreeItem
             nodeId="20"
             labelText="Governance and public accountability"
@@ -157,7 +162,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/participatory-local-governance-and-public-accountability-project")}
           />
           <StyledTreeItem
-            nodeId="21"
+            nodeId="22"
             labelText="Local rights"
             labelIcon={AddTaskIcon}
             labelInfo="90"
@@ -166,7 +171,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/local-rights")}
           />
           <StyledTreeItem
-            nodeId="22"
+            nodeId="23"
             labelText="Women empowerment"
             labelIcon={AddTaskIcon}
             labelInfo="90"
@@ -176,9 +181,9 @@ export default function GmailTreeView({ closeDrawer }) {
           />
 
         </StyledTreeItem>
-        <StyledTreeItem nodeId="11" labelText={"Education and Culture"} labelIcon={Label}>
+        <StyledTreeItem nodeId="12" labelText={"Education and Culture"} labelIcon={Label}>
           <StyledTreeItem
-            nodeId="23"
+            nodeId="24"
             labelText="Language and Culture"
             labelIcon={AddTaskIcon}
             labelInfo="2,294"
@@ -187,7 +192,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/language-and-culture-project")}
           />
           <StyledTreeItem
-            nodeId="24"
+            nodeId="25"
             labelText="Tonga online"
             labelIcon={AddTaskIcon}
             labelInfo="2,294"
@@ -196,7 +201,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/tonga-online-project")}
           />
           <StyledTreeItem
-            nodeId="25"
+            nodeId="26"
             labelText="Information creation access, and sharing"
             labelIcon={AddTaskIcon}
             labelInfo="2,294"
@@ -205,9 +210,9 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/integrated-information-creation-access-and-sharing")}
           />
         </StyledTreeItem>
-        <StyledTreeItem nodeId="12" labelText={"Livelihoods"} labelIcon={Label}>
+        <StyledTreeItem nodeId="13" labelText={"Livelihoods"} labelIcon={Label}>
           <StyledTreeItem
-            nodeId="26"
+            nodeId="27"
             labelText="Integrated acquaculture agriculture"
             labelIcon={AddTaskIcon}
             labelInfo="3,566"
@@ -216,7 +221,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/integrated-aquaculture-agriculture-project")}
           />
           <StyledTreeItem
-            nodeId="27"
+            nodeId="28"
             labelText="Protracted relief projects"
             labelIcon={AddTaskIcon}
             labelInfo="3,566"
@@ -225,7 +230,7 @@ export default function GmailTreeView({ closeDrawer }) {
             onClick={() => actionItem("/basilwizi/protracted-relief-projects-binga-and-gokwe-north")}
           />
           <StyledTreeItem
-            nodeId="28"
+            nodeId="29"
             labelText="Self help groups"
             labelIcon={AddTaskIcon}
             labelInfo="3,566"
@@ -235,7 +240,7 @@ export default function GmailTreeView({ closeDrawer }) {
           />
         </StyledTreeItem>
         <StyledTreeItem
-          nodeId="13"
+          nodeId="14"
           labelText="HIV/AIDS Programme"
           labelIcon={AddTaskIcon}
           labelInfo="733"
@@ -303,6 +308,35 @@ export default function GmailTreeView({ closeDrawer }) {
         labelIcon={PermContactCalendar}
         onClick={() => actionItem("/basilwizi/contact")}
       />
+      {
+        isLoggedIn ? (
+          <StyledTreeItem nodeId="7" labelText={user.email.slice(0,6)} labelIcon={Label}>
+            <StyledTreeItem
+              nodeId="20"
+              labelText="Profile"
+              labelIcon={SupervisorAccountIcon}
+              color="#1a73e8"
+              bgColor="#e8f0fe"
+              onClick={() => actionItem("/basilwizi/profile")}
+            /> 
+            <StyledTreeItem
+              nodeId="21"
+              labelText="Logout"
+              labelIcon={SupervisorAccountIcon}
+              color="#1a73e8"
+              bgColor="#e8f0fe"
+              onClick={logoutUser}
+            />
+          </StyledTreeItem>
+        ) : (
+          <StyledTreeItem 
+            nodeId="7" 
+            labelText="Login" 
+            labelIcon={ExitToAppIcon}
+            onClick={() => actionItem("/basilwizi/accounts")}
+          />
+        )
+      }
     </TreeView>
   );
 }

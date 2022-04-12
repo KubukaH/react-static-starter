@@ -26,6 +26,7 @@ import AnnualReports from "./publications/annualReports";
 import MailingOrder from "./publications/mailing";
 import CurrentNewsletter from "./publications/newsletter/currentNewsletter";
 import ProgrammesIndex from "./programmes";
+import ForgotPassword from "../account/forgotPassword";
 
 const PagesIndex = () => {
   const routes = [
@@ -67,7 +68,8 @@ const PagesIndex = () => {
           element: <AccountLayout />,
           children: [
             {index: true, element: <SignIn />},
-            {path: "signup", element: <SignUp />}
+            {path: "signup", element: <SignUp />},
+            {path: "forgot-password", element: <ForgotPassword />}
           ]
         },
         {

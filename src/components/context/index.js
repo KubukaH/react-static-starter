@@ -1,69 +1,36 @@
 import * as React from 'react';
 import { useParams } from "react-router-dom";
-import netlifyIdentity from 'netlify-identity-widget';
+import { useNetlifyIdentity } from "react-netlify-identity"
 
 import { newsArchives } from '../../settings/archives/newsArchive';
-import { accountService, alertService, newsService } from '../../_services';
+import { newsService } from '../../_services';
 
 export const AuthContext = React.createContext(null);
 
 // RegExp
 function escapeRegExp(value) {
   return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-}
+};
 
 export const ContextProvider = ({ children }) => {
-  const [user, setUser] = React.useState(accountService.userValue);
+  /**
+   * Identity
+   */
+  const [url, setUrl] = React.useState(window.location.origin);
+  React.useEffect(() => setUrl("https://basilwizi.netlify.app/"));
+  const identity = useNetlifyIdentity(url);
+
   const [rows, setRows] = React.useState([]);
   const [items, setItems] = React.useState([]);
   React.useEffect(() => newsService.getAll().then(x => setRows(x)),[rows]);
   React.useEffect(() => setItems(newsArchives), [items]);
   const [articles, setArticles] = React.useState(rows);
   const [searchText, setSearchText] = React.useState('');
-  const [done, setDone] = React.useState(false);
   const [article, setArticle] = React.useState({});
   const [archives, setArchives] = React.useState(items);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   // IDs
-  const {artId} = useParams();
-
-  /**
-   * 
-   * @param {email} email 
-   * @param {password} password 
-   * @returns 
-   */
-  netlifyIdentity.on("login", (user) => {
-    setUser(user);
-    setIsLoggedIn(true);
-  });
-
-  netlifyIdentity.on("logout", (user) => {
-    setUser(null);
-    setIsLoggedIn(false);
-  });
-
-  /**
-   * Context of Subscribing
-   */
-
-  function saveEmail(params) {
-    return fetchWrapper.post(`${subsUrl}/saveemail`, params);
-  }
-
-  function getAllEmails() {
-    return fetchWrapper.get(subsUrl);
-  }
-  
-  function getEmailById(id) {
-    return fetchWrapper.get(`${subsUrl}/${id}`);
-  }
-  
-  async function deleteEmail(id) {
-    const x = await fetchWrapper.delete(`${subsUrl}/${id}`);
-    return x;
-  }
+  const { artId } = useParams();
 
   /**
    * 
@@ -154,40 +121,37 @@ export const ContextProvider = ({ children }) => {
     newsService.getById(artId).then(x => setArticle(x));
   }, [article]);
 
-  /**
-   * Values set into Context
-   */
-  const value = {
-    /** Account */
-    done,
-    isLoggedIn,
-    user,
-    /** Subscribing */
-    saveEmail,
-    getAllEmails,
-    getEmailById,
-    deleteEmail,
-    /** Contact Us Context */
-    sendmessage,
-    getAllMessages,
-    getMessageById,
-    createMessage,
-    deleteMessage,
-    /** News Context */
-    saveNews,
-    getArticleById,
-    createArticle,
-    updateArticle,
-    deleteArticle,
-    articles,
-    requestSearch,
-    searchText,
-    article,
-    archives,
-    archiveSearch
-  };
+  const newId = () => {
+    identity.push({
+      /** Account Contect using React Netlify Identity */
+      /** Subscribing */
+      saveEmail,
+      getAllEmails,
+      getEmailById,
+      deleteEmail,
+      /** Contact Us Context */
+      sendmessage,
+      getAllMessages,
+      getMessageById,
+      createMessage,
+      deleteMessage,
+      /** News Context */
+      saveNews,
+      getArticleById,
+      createArticle,
+      updateArticle,
+      deleteArticle,
+      articles,
+      requestSearch,
+      searchText,
+      article,
+      archives,
+      archiveSearch
+    });
+    return identity;
+  }
 
-  return (<AuthContext.Provider value={value}>
+  return (<AuthContext.Provider value={identity}>
       {children}
     </AuthContext.Provider>);
 };
