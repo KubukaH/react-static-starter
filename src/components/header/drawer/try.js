@@ -8,13 +8,9 @@ import Box from '@mui/material/Box';
 import TreeView from '@mui/lab/TreeView';
 import TreeItem, { treeItemClasses } from '@mui/lab/TreeItem';
 import Typography from '@mui/material/Typography';
-import MailIcon from '@mui/icons-material/Mail';
-import DeleteIcon from '@mui/icons-material/Delete';
 import Label from '@mui/icons-material/Label';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import InfoIcon from '@mui/icons-material/Info';
-import ForumIcon from '@mui/icons-material/Forum';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Home from '@mui/icons-material/Home';
@@ -126,7 +122,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="8"
           labelText="Secretariat and Management"
           labelIcon={InfoIcon}
-          labelInfo="90"
           color="#1a73e8"
           bgColor="#e8f0fe"
           onClick={() => actionItem("/basilwizi/about")}
@@ -135,7 +130,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="9"
           labelText="Board Members"
           labelIcon={InfoIcon}
-          labelInfo="90"
           color="#1a73e8"
           bgColor="#e8f0fe"
           onClick={() => actionItem("/basilwizi/about/board-members")}
@@ -144,7 +138,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="10"
           labelText="Advisory council"
           labelIcon={InfoIcon}
-          labelInfo="90"
           color="#1a73e8"
           bgColor="#e8f0fe"
           onClick={() => actionItem("/basilwizi/about/advisory-council")}
@@ -156,7 +149,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="20"
             labelText="Governance and public accountability"
             labelIcon={AddTaskIcon}
-            labelInfo="90"
             color="#1a73e8"
             bgColor="#e8f0fe"
             onClick={() => actionItem("/basilwizi/participatory-local-governance-and-public-accountability-project")}
@@ -165,7 +157,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="22"
             labelText="Local rights"
             labelIcon={AddTaskIcon}
-            labelInfo="90"
             color="#1a73e8"
             bgColor="#e8f0fe"
             onClick={() => actionItem("/basilwizi/local-rights")}
@@ -174,7 +165,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="23"
             labelText="Women empowerment"
             labelIcon={AddTaskIcon}
-            labelInfo="90"
             color="#1a73e8"
             bgColor="#e8f0fe"
             onClick={() => actionItem("/basilwizi/women-economic-empowerment-project")}
@@ -186,7 +176,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="24"
             labelText="Language and Culture"
             labelIcon={AddTaskIcon}
-            labelInfo="2,294"
             color="#e3742f"
             bgColor="#fcefe3"
             onClick={() => actionItem("/basilwizi/language-and-culture-project")}
@@ -195,7 +184,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="25"
             labelText="Tonga online"
             labelIcon={AddTaskIcon}
-            labelInfo="2,294"
             color="#e3742f"
             bgColor="#fcefe3"
             onClick={() => actionItem("/basilwizi/tonga-online-project")}
@@ -204,7 +192,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="26"
             labelText="Information creation access, and sharing"
             labelIcon={AddTaskIcon}
-            labelInfo="2,294"
             color="#e3742f"
             bgColor="#fcefe3"
             onClick={() => actionItem("/basilwizi/integrated-information-creation-access-and-sharing")}
@@ -215,7 +202,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="27"
             labelText="Integrated acquaculture agriculture"
             labelIcon={AddTaskIcon}
-            labelInfo="3,566"
             color="#a250f5"
             bgColor="#f3e8fd"
             onClick={() => actionItem("/basilwizi/integrated-aquaculture-agriculture-project")}
@@ -224,7 +210,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="28"
             labelText="Protracted relief projects"
             labelIcon={AddTaskIcon}
-            labelInfo="3,566"
             color="#a250f5"
             bgColor="#f3e8fd"
             onClick={() => actionItem("/basilwizi/protracted-relief-projects-binga-and-gokwe-north")}
@@ -233,7 +218,6 @@ export default function GmailTreeView({ closeDrawer }) {
             nodeId="29"
             labelText="Self help groups"
             labelIcon={AddTaskIcon}
-            labelInfo="3,566"
             color="#a250f5"
             bgColor="#f3e8fd"
             onClick={() => actionItem("/basilwizi/self-help-groups")}
@@ -243,7 +227,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="14"
           labelText="HIV/AIDS Programme"
           labelIcon={AddTaskIcon}
-          labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
           onClick={() => actionItem("/basilwizi/health-HIV-and-AIDS-programme")}
@@ -254,7 +237,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="15"
           labelText="Online news"
           labelIcon={ChromeReader}
-          labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
           onClick={() => actionItem("/basilwizi/online-news")}
@@ -263,7 +245,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="16"
           labelText="Newsletter"
           labelIcon={ChromeReader}
-          labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
           onClick={() => actionItem("/basilwizi/newsletter")}
@@ -272,7 +253,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="17"
           labelText="Archives"
           labelIcon={ChromeReader}
-          labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
           onClick={() => actionItem("/basilwizi/previous-issues")}
@@ -281,7 +261,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="18"
           labelText="Project evaluations"
           labelIcon={ChromeReader}
-          labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
           onClick={() => actionItem("/basilwizi/project-evaluations")}
@@ -290,7 +269,6 @@ export default function GmailTreeView({ closeDrawer }) {
           nodeId="19"
           labelText="Other documents"
           labelIcon={ChromeReader}
-          labelInfo="733"
           color="#3c8039"
           bgColor="#e6f4ea"
           onClick={() => actionItem("/basilwizi/other-documents")}
