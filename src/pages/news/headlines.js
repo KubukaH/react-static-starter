@@ -17,7 +17,7 @@ const NewsHeadlines = () => {
   const { articles, requestSearch, searchText } = ctx;
 
   const postGrid = React.useCallback(() => {
-    if (articles.length > 0) {
+    if (articles && articles.length > 0) {
       return articles.map((head) => {
         return (
           <Box
