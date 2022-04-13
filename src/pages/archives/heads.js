@@ -17,7 +17,7 @@ const ArchiveHeadlines = () => {
   const { archives, archiveSearch, searchText } = ctx;
 
   const postGrid = React.useCallback(() => {
-    if (archives.length > 0) {
+    if (archives && archives.length > 0) {
       return archives.map((head) => {
         return (
           <Box

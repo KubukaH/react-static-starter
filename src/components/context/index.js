@@ -121,37 +121,28 @@ export const ContextProvider = ({ children }) => {
     newsService.getById(artId).then(x => setArticle(x));
   }, [article]);
 
-  const newId = () => {
-    identity.push({
-      /** Account Contect using React Netlify Identity */
-      /** Subscribing */
-      saveEmail,
-      getAllEmails,
-      getEmailById,
-      deleteEmail,
-      /** Contact Us Context */
-      sendmessage,
-      getAllMessages,
-      getMessageById,
-      createMessage,
-      deleteMessage,
-      /** News Context */
-      saveNews,
-      getArticleById,
-      createArticle,
-      updateArticle,
-      deleteArticle,
-      articles,
-      requestSearch,
-      searchText,
-      article,
-      archives,
-      archiveSearch
-    });
-    return identity;
-  }
+  const value = {
+    sendmessage,
+    getAllMessages,
+    getMessageById,
+    createMessage,
+    deleteMessage,
+    /** News Context */
+    saveNews,
+    getArticleById,
+    createArticle,
+    updateArticle,
+    deleteArticle,
+    articles,
+    requestSearch,
+    searchText,
+    article,
+    archives,
+    archiveSearch,
+    identity
+  };
 
-  return (<AuthContext.Provider value={identity}>
+  return (<AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>);
 };
