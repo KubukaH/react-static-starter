@@ -34,7 +34,7 @@ const Newsletters = () => {
             <Button
               component="a"
               href={prj.item}
-              download
+              download={prj.title}
             >
               💾
             </Button>

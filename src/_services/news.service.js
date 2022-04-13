@@ -1,7 +1,7 @@
 import { fetchWrapper } from '@/_helpers';
-import { server } from "../constants";
+// import { server } from "../constants";
 
-const baseUrl = `${server.serverUrl}/news`;
+const baseUrl = `news`;
 
 export const newsService = {
   saveNews,

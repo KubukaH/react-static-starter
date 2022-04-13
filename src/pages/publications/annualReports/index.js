@@ -36,6 +36,9 @@ const AnnualReports = () => {
               <Button 
                 type="button"
                 aria-label="Download file"
+                component="a"
+                href={prj.item}
+                download
               >
                 💾
               </Button>
