@@ -56,22 +56,33 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().required("Email is required!").email("Must be email!")
 });
 
+const encode = (data) => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
 const Subscribe = () => {
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={({ email }, { setSubmitting }) => {
-        alertService.clear();
-        setSubmitting(true);
-        subscribeService.saveEmail(email).then(() => {
-          alertService.success("Email has been added to our subscribers Database");
-          setSubmitting(false);
-        }).catch((error) => {
-          alertService.error(error);
-          setSubmitting(false);
-          console.log(error);
-        });
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({ "form-name": "Subscriber", email }),
+          mode: "no-cors"
+        })
+          .then(() => {
+            alertService.success("Thank you for subscribing.");
+            setSubmitting(false);
+          })
+          .catch((error) => {
+            alertService.error(error);
+            setSubmitting(false);
+          });
+
       }}
     >
       <Form>

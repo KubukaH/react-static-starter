@@ -44,19 +44,19 @@ func main() {
 	}()
 
 	// begin find
-	coll := client.Database("Basilwizi0").Collection("news")
-	filter := bson.D{{"pop", bson.D{{"$lte", 500}}}}
+	//client.Database("Basilwizi0").Collection("news")
+	//filter := bson.D{{"pop", bson.D{{"$lte", 500}}}}
 
-	cursor, err := coll.Find(context.TODO(), filter)
+	// cursor, err := coll.Find(context.TODO(), filter)
 	if err != nil {
 		panic(err)
 	}
 	// end find
 
 	var results []bson.M
-	if err = cursor.All(context.TODO(), &results); err != nil {
-		panic(err)
-	}
+	//if err = cursor.All(context.TODO(), &results); err != nil {
+	//	panic(err)
+	//}
 	for _, result := range results {
 		output, err := json.MarshalIndent(result, "", "    ")
 		if err != nil {

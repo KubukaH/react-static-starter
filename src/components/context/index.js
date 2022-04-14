@@ -34,34 +34,6 @@ export const ContextProvider = ({ children }) => {
 
   /**
    * 
-   * @param {message, date, title} params 
-   * @returns 
-   */
-
-  function sendmessage(params) {
-    return fetchWrapper.post(`${contUrl}/sendmessage`, params);
-  }
-  
-  function getAllMessages() {
-    return fetchWrapper.get(contUrl);
-  }
-  
-  function getMessageById(id) {
-    return fetchWrapper.get(`${contUrl}/${id}`);
-  }
-  
-  function createMessage(params) {
-    return fetchWrapper.post(contUrl, params);
-  }
-  
-  // prefixed with underscore because 'delete' is a reserved word in javascript
-  async function deleteMessage(id) {
-    const x = await fetchWrapper.delete(`${contUrl}/${id}`);
-    return x;
-  }
-
-  /**
-   * 
    * @param {title, author, date} params 
    * @returns 
    */
@@ -97,18 +69,7 @@ export const ContextProvider = ({ children }) => {
   }, [article]);
 
   const value = {
-    /** Subscribing *
-    saveEmail,
-    getAllEmails,
-    getEmailById,
-    deleteEmail,
-    /** Contact Us Context */
     ...identity,
-    sendmessage,
-    getAllMessages,
-    getMessageById,
-    createMessage,
-    deleteMessage,
     /** News Context */
     articles,
     requestSearch,
