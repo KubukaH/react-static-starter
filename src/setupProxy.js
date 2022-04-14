@@ -1,11 +1,14 @@
-/*import { createProxyMiddleware } from 'http-proxy-middleware';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 export default function(app) {
   app.use(
-    '/server',
+    '/.netlify/functions',
     createProxyMiddleware({
-      target: 'https://basilwizi.netlify.app',
-      changeOrigin: true,
+      target: 'http://localhost:9000/',
+      "pathRewrite": {
+        "^/\\.netlify/functions": "",
+        changeOrigin: true,
+      }
     })
   );
-};*/
+};

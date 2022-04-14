@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { accountService } from "../_services";
-import { server } from "../constants";
+import { useCTX } from "../components/context";
 
 export const fetchWrapper = {
   get,
@@ -49,11 +49,11 @@ function _delete(url) {
 
 function authHeader(url) {
   // return auth header with jwt if user is logged in and request is to the api url
-  const user = accountService.userValue;
-  const isLoggedIn = user && user.jwtToken;
-  const isApiUrl = url.startsWith(server.serverUrl);
-  if (isLoggedIn && isApiUrl) {
-    return { Authorization: `Bearer ${user.jwtToken}` };
+  /*const ctx = useCTX();
+  const { isLoggedIn, authedFetch } = ctx;*/
+  const isApiUrl = url.startsWith("https://basilwizi.netlify.app");
+  if (isApiUrl) {
+    return { Authorization: 'Bearer' };
   } else {
     return {};
   }

@@ -5,7 +5,7 @@ import { useNetlifyIdentity } from "react-netlify-identity"
 import { newsArchives } from '../../settings/archives/newsArchive';
 import { newsService } from '../../_services';
 
-export const AuthContext = React.createContext(null);
+export const AuthContext = React.createContext();
 
 // RegExp
 function escapeRegExp(value) {
@@ -17,7 +17,7 @@ export const ContextProvider = ({ children }) => {
    * Identity
    */
   const [url, setUrl] = React.useState(window.location.origin);
-  React.useEffect(() => setUrl("https://basilwizi.netlify.app/"));
+  React.useEffect(() => setUrl("https://basilwizi.netlify.app"));
   const identity = useNetlifyIdentity(url);
 
   const [rows, setRows] = React.useState([]);
@@ -66,31 +66,6 @@ export const ContextProvider = ({ children }) => {
    * @returns 
    */
 
-  function saveNews(params) {
-    return newsService.saveNews(params);
-  }
-  
-  function getArticleById(id) {
-    return newsService.getById(id);
-  }
-  
-  function createArticle(params) {
-    return fetchWrapper.post(newsUrl, params);
-  }
-  
-  async function updateArticle(id, params) {
-    const article = await fetchWrapper.put(`${newsUrl}/${id}`, params);
-    setArticles(article);
-    return article;
-  }
-  
-  // prefixed with underscore because 'delete' is a reserved word in javascript
-  async function deleteArticle(id) {
-    const x = await fetchWrapper.delete(`${newsUrl}/${id}`);
-    setArticles(x);
-    return x;
-  }
-
   const requestSearch = (searchValue) => {
     setSearchText(searchValue);
     const searchRegex = new RegExp(escapeRegExp(searchValue), 'i');
@@ -122,25 +97,26 @@ export const ContextProvider = ({ children }) => {
   }, [article]);
 
   const value = {
+    /** Subscribing *
+    saveEmail,
+    getAllEmails,
+    getEmailById,
+    deleteEmail,
+    /** Contact Us Context */
+    ...identity,
     sendmessage,
     getAllMessages,
     getMessageById,
     createMessage,
     deleteMessage,
     /** News Context */
-    saveNews,
-    getArticleById,
-    createArticle,
-    updateArticle,
-    deleteArticle,
     articles,
     requestSearch,
     searchText,
     article,
     archives,
-    archiveSearch,
-    identity
-  };
+    archiveSearch
+  }
 
   return (<AuthContext.Provider value={value}>
       {children}

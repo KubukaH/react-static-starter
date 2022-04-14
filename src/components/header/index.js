@@ -75,7 +75,7 @@ const Header = (props) => {
           <Toolbar disableGutters>
             <Box
               sx={{ 
-                display: { xs: "none", md: "flex" },
+                display: { xs: "none", md: "none", lg: "flex" },
                 flexDirection: "row",
                 justifyContent: "space-evenly",
                 width: 2/3,
@@ -98,7 +98,7 @@ const Header = (props) => {
             </Box>
             <Box
               sx={{ 
-                display: { xs: "flex", md: "none" },
+                display: { xs: "flex", md: "flex", lg: "none" },
                 flexDirection: "row",
                 justifyContent: "space-around",
                 alignItems: "center",

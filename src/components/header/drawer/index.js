@@ -82,7 +82,6 @@ const ToggleDrawer = () => {
       ref={anchorRef}
       aria-controls={openDrawer ? drawerId : undefined}
       sx={{
-        display: ["flex", "flex", "none"],
         transition: theme.transitions.duration.standard,
         background: alpha(theme.palette.background.basilwiziTransparent, .2),
         color: theme.palette.text.primary,

@@ -1,7 +1,7 @@
 import { fetchWrapper } from '@/_helpers';
 // import { server } from "../constants";
 
-const baseUrl = `/.netlify/lambda/news/controller`;
+const baseUrl = `/.netlify/functions/news/controller`;
 
 export const newsService = {
   saveNews,

@@ -1,7 +1,7 @@
 const newsService = require('./service');
 
 exports.handler = function(event, context, callback) {
-  if (event.httpMethod !== 'POST') {
+  if (event.httpMethod !== 'GET') {
     return callback(null, {
       statusCode: 405,
       body: 'Method not allowed',

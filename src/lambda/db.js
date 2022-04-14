@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise;
 //Export Modules
 module.exports = {
   News: require('./news/model'),
+  Account: require('./user/model'),
   isValidId
 };
 
