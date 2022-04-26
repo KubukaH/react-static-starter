@@ -123,7 +123,7 @@ const SignUp = () => {
           </Box>
           <Box
             component={Link}
-            to="forgot-password"
+            to="/basilwizi/accounts/forgot-password"
             sx={{
               color: "text.primary",
               fontSize: 11,

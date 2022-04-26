@@ -5,20 +5,50 @@ import Box from "@mui/material/Box";
 import {alpha,  useTheme } from "@mui/material/styles";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
+import Pagination from '@mui/material/Pagination';
+import TablePagination from '@mui/material/TablePagination';
 
 // LOCAL Imports
 import { Link } from "react-router-dom";
 import { useCTX } from "../../components/context";
 import SearchBox from "../news/searchBox";
+import { newsArchives } from "../../settings/archives/newsArchive";
 
+// RegExp
+function escapeRegExp(value) {
+  return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
+
+const perPage = 6;
 const ArchiveHeadlines = () => {
+  const [page, setPage] = React.useState(1);
+  const [archives, setArchives] = React.useState(newsArchives);
+  const [searchText, setSearchText] = React.useState('');
   const theme = useTheme();
-  const ctx = useCTX();
-  const { archives, archiveSearch, searchText } = ctx;
+
+  const archiveSearch = (searchValue) => {
+    setSearchText(searchValue);
+    const searchRegex = new RegExp(escapeRegExp(searchValue), 'i');
+    const filteredRows = newsArchives.filter((row) => {
+      return Object.keys(row).some((field) => {
+        return searchRegex.test(row[field].toString());
+      });
+    });
+    setArchives(filteredRows);
+  };
+
+  const handleChangePage = React.useCallback(
+    (__, page) => {
+      setPage(page);
+    },
+    [setPage]
+  );
 
   const postGrid = React.useCallback(() => {
     if (archives.length > 0) {
-      return archives.map((head) => {
+      return archives
+        .slice(page * perPage, page * perPage + perPage)
+        .map((head) => {
         return (
           <Box
             key={head.title}
@@ -158,6 +188,23 @@ const ArchiveHeadlines = () => {
     >
       {postGrid()}
     </Box>
+    {archives.length > perPage && (
+      <TablePagination
+        component="div"
+        count={archives.length}
+        rowsPerPage={perPage}
+        page={page}
+        backIconButtonProps={{
+          "aria-label": "Previous Page",
+        }}
+        nextIconButtonProps={{
+          "aria-label": "Next Page",
+        }}
+        onPageChange={handleChangePage}
+        labelRowsPerPage="Items on page:"
+        rowsPerPageOptions={[6, 18, 36, { label: 'All', value: -1 }]}
+      />
+    )}
     </>
   );
 };

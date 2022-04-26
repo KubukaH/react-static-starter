@@ -1,7 +1,6 @@
-import { server } from '../constants';
 import { fetchWrapper } from '../_helpers';
 
-const baseUrl = `${server.serverUrl}/subscribe`;
+const baseUrl = `http://localhost:9000/subscribe`;
 
 export const subscribeService = {
   saveEmail,

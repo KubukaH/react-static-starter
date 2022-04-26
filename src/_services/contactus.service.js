@@ -1,6 +1,6 @@
 import { fetchWrapper } from '../_helpers';
 
-const baseUrl = `contactus`;
+const baseUrl = `http://localhost:9000/contactus`;
 
 export const contactusService = {
   sendmessage,

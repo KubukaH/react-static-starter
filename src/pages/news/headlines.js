@@ -5,23 +5,36 @@ import Box from "@mui/material/Box";
 import {alpha,  useTheme } from "@mui/material/styles";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
+import TablePagination from '@mui/material/TablePagination';
 
 // LOCAL Imports
 import { Link } from "react-router-dom";
 import SearchBox from "./searchBox";
 import { useCTX } from "../../components/context";
 
+const perPage = 6;
 const NewsHeadlines = () => {
-  const theme = useTheme();
+  const [page, setPage] = React.useState(0);
   const ctx = useCTX();
   const { articles, requestSearch, searchText } = ctx;
 
+  const theme = useTheme();
+
+  const handleChangePage = React.useCallback(
+    (__, page) => {
+      setPage(page);
+    },
+    [setPage]
+  );
+
   const postGrid = React.useCallback(() => {
     if (articles.length > 0) {
-      return articles.map((head) => {
+      return articles
+        .slice(page * perPage, page * perPage + perPage)
+        .map((head) => {
         return (
           <Box
-            key={head.article_title}
+            key={head.id}
             sx={{
               width: 1,
               height: 256,
@@ -61,11 +74,11 @@ const NewsHeadlines = () => {
                 textAlign: "justify"
               }}
             >
-              {head.article_content}
+              <span dangerouslySetInnerHTML={{__html:head.article_content.slice(0,256)}} />
             </Box>
             <Box
               component={Link}
-              to={`/basilwizi/online-news/${head.id}`}
+              to={`${head.article_title.split(' ').join('-').toLowerCase()}?uaid=${head.id}`}
               sx={{
                 color: "text.secondary",
                 fontSize: 13,
@@ -159,6 +172,23 @@ const NewsHeadlines = () => {
     >
       {postGrid()}
     </Box>
+    {articles.length > perPage && (
+      <TablePagination
+        component="div"
+        count={articles.length}
+        rowsPerPage={perPage}
+        page={page}
+        backIconButtonProps={{
+          "aria-label": "Previous Page",
+        }}
+        nextIconButtonProps={{
+          "aria-label": "Next Page",
+        }}
+        onPageChange={handleChangePage}
+        labelRowsPerPage='Pages'
+        rowsPerPageOptions={[6, 18, 36, { label: 'All', value: -1 }]}
+      />
+    )}
     </>
   );
 }

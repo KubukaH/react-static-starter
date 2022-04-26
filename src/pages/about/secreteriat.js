@@ -8,21 +8,21 @@ import di from "../../tools/media/images/blank-avatar.jpg";
 
 const employees = [
   {
-    name: "Maxwell Dodo Munenge",
-    email: "maxwellm@basilwizi.co.zw",
-    role: "Programmes",
-    image: di
-  },
-  {
-    name: "Nomathemba Nyoni",
-    email: "norman@basilwizi.co.zw",
-    role: "Finance officer ",
-    image: di
-  },
-  {
     name: "Danisa Mudimba",
-    email: "danisam@basilwizi.co.zw",
-    role: "Area Coordinator ",
+    email: "danisam.basilwizi@gmail.com",
+    role: "Programmes Manager",
+    image: di
+  },
+  {
+    name: "Argument Mungombe",
+    email: "argumentm.basilwizi@gmail.com",
+    role: "Finance & Admin Officer ",
+    image: di
+  },
+  {
+    name: "Gayson Siampongo",
+    email: "gaysons.basilwizi@gmail.com",
+    role: "Programmes Officer",
     image: di
   },
 ];
@@ -46,17 +46,19 @@ const Secretariat = () => {
       <Box
         component="div"
         sx={{
-          width: ['90%','90%',1/4],
-          height: ['90%','90%',1/4],
+          width: ['90%','90%', .5],
+          height: [416, 512],
           display:"flex",
           flexDirection: "column",
           alignItems: "center",
           overflow: "hidden",
-          borderTopLeftRadius: 3,
-          borderTopRightRadius: 3,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
           boxShadow: 4,
           mx: "auto",
-          my: 5
+          my: 5,
+          bgcolor: "background.basilwiziColor",
+          color: "ghostwhite"
         }}
       >
         <Box
@@ -65,38 +67,39 @@ const Secretariat = () => {
           alt="Director"
           sx={{
             width: "100%",
-            height: 1
+            height: .7
           }}
         />
         <Box
           sx={{
-            fontSize: 26, fontWeight: "medium", color: "text.primary", py: 3
+            fontSize: 26, fontWeight: "medium", color: "inherit", py: 3
           }}
         >
           Director
         </Box>
         <Box
           sx={{
-            fontSize: 16, fontWeight: "medium", color: "text.primary"
+            fontSize: 16, fontWeight: "medium", color: "inherit"
           }}
         >
           Christopher Mweembe
         </Box>
         <Box
           sx={{
-            fontSize: 12, fontWeight: "medium", color: "text.primary"
+            fontSize: 12, fontWeight: "medium", color: "inherit"
           }}
         >
-          (christopherm@basilwizi.co.zw)
+          christopherm.basilwizi@gmail.com
         </Box>
       </Box>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: ["column", "row"],
-          justifyContent: "space-evenly",
-          mx: ["auto"],
-          flexWrap: "wrap"
+          display: "grid",
+          gridTemplateColumns: ['repeat(1, 1fr)','repeat(3, 1fr)'],
+          columnGap: 5,
+          rowGap: 5,
+          my: 4,
+          mx: 5,
         }}
       >
         {
@@ -104,17 +107,18 @@ const Secretariat = () => {
             <Box
               key={e.name}
               sx={{
-                width: ["75%", "75%", 1/4],
-                height: ["75%", "75%", 1/4],
+                width: [.75, 1],
+                height: [360, 400],
                 display:"flex",
                 flexDirection: "column",
                 alignItems: "center",
                 overflow: "hidden",
                 borderTopLeftRadius: 20,
-                borderTopRightRadius: 3,
+                borderTopRightRadius: 20,
                 boxShadow: 4,
-                mx: "auto",
-                my: 5
+                mx: ["auto"],
+                bgcolor: "background.basilwiziColor",
+                color: "ghostwhite"
               }}
             >
               <Box
@@ -123,26 +127,30 @@ const Secretariat = () => {
                 alt={e.name}
                 sx={{
                   width: "100%",
-                  height: "100%"
+                  height: .7
                 }}
               />
               <Box
                 sx={{
-                  fontSize: 26, fontWeight: "medium", color: "text.primary", py: 3
+                  fontSize: ["4vw", "1.6vw"], 
+                  fontWeight: "medium", 
+                  color: "inherit", 
+                  py: 3,
+                  textAlign: 'center'
                 }}
               >
                 {e.role}
               </Box>
               <Box
                 sx={{
-                  fontSize: 16, fontWeight: "medium", color: "text.primary"
+                  fontSize: 16, fontWeight: "medium", color: "inherit"
                 }}
               >
                 {e.name}
               </Box>
               <Box
                 sx={{
-                  fontSize: 12, fontWeight: "medium", color: "text.primary"
+                  fontSize: 12, fontWeight: "medium", color: "inherit"
                 }}
               >
                 {e.email}

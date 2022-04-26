@@ -1,7 +1,4 @@
 /* eslint-disable */
-import { accountService } from "../_services";
-import { useCTX } from "../components/context";
-
 export const fetchWrapper = {
   get,
   post,
@@ -49,9 +46,7 @@ function _delete(url) {
 
 function authHeader(url) {
   // return auth header with jwt if user is logged in and request is to the api url
-  /*const ctx = useCTX();
-  const { isLoggedIn, authedFetch } = ctx;*/
-  const isApiUrl = url.startsWith("https://basilwizi.netlify.app");
+  const isApiUrl = url.startsWith("http://localhost:9000");
   if (isApiUrl) {
     return { Authorization: 'Bearer' };
   } else {
@@ -64,11 +59,6 @@ function handleResponse(response) {
     const data = text && JSON.parse(text);
 
     if (!response.ok) {
-      if ([401, 403].includes(response.status) && accountService.userValue) {
-        // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
-        accountService.logout();
-      }
-
       const error = (data && data.message) || response.statusText;
       return Promise.reject(error);
     }
