@@ -16,7 +16,7 @@ import { alertService } from '../_services/alert.service';
 
 const client = new faunadb.Client({
   secret: 'fnAEmZfZNpAARbpNzfs05789eQE_dsX-nExOPwoE',
-  domain: !isLocalHost ? env.FAUNA_DOMAIN : 'localhost',
+  domain: 'db.eu.fauna.com',
 });
 
 export const newItem = async (colc, data) => {
