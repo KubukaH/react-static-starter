@@ -1,7 +1,6 @@
 import { fetchWrapper } from '@/_helpers';
-// import { server } from "../constants";
 
-const baseUrl = `/.netlify/functions/news/controller`;
+const baseUrl = `http://localhost:9000/news`;
 
 export const newsService = {
   saveNews,
@@ -13,8 +12,12 @@ export const newsService = {
 };
 
 function saveNews(params) {
-  return fetchWrapper.post(`${baseUrl}/savenews`, params);
-}
+  return fetchWrapper.post(`${baseUrl}/savenews`, params).then(
+    (news) => {
+      return news;
+    }
+  );
+};
 
 function getAll() {
   return fetchWrapper.get(baseUrl).then(

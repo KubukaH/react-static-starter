@@ -6,10 +6,10 @@
     "clean": "rm build/bundle.js",
     "start": "run-p start:**",
     "start:app": "webpack serve --open --config webpack.dev.js",
-    "start:lambda": "netlify-lambda serve src/lambda",
+    "start:lambda": "netlify-lambda serve ./src/lambda/main --port 9090",
     "build": "run-p build:**",
     "build:app": "webpack --config webpack.prod.js",
-    "build:lambda": "netlify-lambda build src/lambda"
+    "build:lambda": "netlify-lambda build src/lambda/main && go get ./src/lambda/main/... && go build -o lambda/main/main ./src/lambda/main/main.go"
   },
   "dependencies": {
     "@babel/core": "^7.17.5",

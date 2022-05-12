@@ -1,102 +1,186 @@
-import * as React from "react";
-import { useField, Form, Formik } from "formik";
-import * as Yup from "yup";
-
-// MUI imports
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import * as React from 'react';
+import { 
+  AlertDialogOverlay, 
+  AlertDialogLabel, 
+  AlertDialogContent ,
+  AlertDialogDescription
+} from "@reach/alert-dialog";
+import { Formik, Form, useField } from "formik";
 import Box from "@mui/material/Box";
+import {
+  TextField,
+  Checkbox,
+  FormControlLabel,
+} from "@mui/material";
+import LoadingButton from '@mui/lab/LoadingButton';
+import SendIcon from '@mui/icons-material/Send';
 
-// Local imports
-import { alertService, subscribeService } from "../_services";
+import TermsAndConditions from "../settings/terms";
+import { alertService, mailingService } from "../_services";
 
-const MyTextField = ({label, ...props}) => {
+const MyTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <TextField
-      variant="outlined"
-      placeholder="Email"
-      type="email"
-      InputProps={{
-        endAdornment: (
-          <Button
-            type="submit"
-            color="primary"
-          >
-            send
-          </Button>
-        ),
+      label={label}
+      id={props.id}
+      variant="standard"
+      fullWidth
+      inputProps={{
+        ...field,
+        ...props,
       }}
-      sx={{
-        width: {
-          xs: 1,
-          sm: 'auto',
-        },
-        m: (theme) => theme.spacing(1, 0.5, 1.5),
-        '& .MuiSvgIcon-root': {
-          mr: 0.5,
-        },
-        '& .MuiInput-underline:before': {
-          borderBottom: 1,
-          borderColor: 'divider',
-        },
-      }}
-      error={meta.touched && Boolean(meta.error)}
-      {...field}
-      {...props}
+      sx={{ m: 1 }}
+    />
+  );
+};
+
+const MyCheckBox = ({ label, ...props }) => {
+  const [field, meta] = useField({ ...props, type: 'checkbox' });
+  return (
+    <FormControlLabel
+      control={
+        <Checkbox color="primary" {...field} {...props} />
+      }
+      label={
+        label
+      }
     />
   );
 }
 
-const initialValues = {
-  email: ""
-};
-
-const validationSchema = Yup.object().shape({
-  email: Yup.string().required("Email is required!").email("Must be email!")
-});
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-}
-
 const Subscribe = () => {
-  return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={({ email }, { setSubmitting }) => {
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({ "form-name": "Subscriber", email }),
-          mode: "no-cors"
-        })
-          .then(() => {
-            alertService.success("Thank you for subscribing.");
-            setSubmitting(false);
-          })
-          .catch((error) => {
-            alertService.error(error);
-            setSubmitting(false);
-          });
+  const [open, setOpen] = React.useState(false);
+  const cancelRef = React.useRef();
 
+  const handleOpen =  () => setOpen(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+    <LoadingButton
+      type='button'
+      variant='outlined'
+      onClick={handleOpen}
+      color='success'
+      sx={{
+        boxShadow: "16px"
       }}
     >
-      <Form>
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%"
-          }}
+      Subscribe for updates
+    </LoadingButton>
+    {
+      open && (
+        <AlertDialogOverlay
+          leastDestructiveRef={cancelRef}
+          onDismiss={handleClose}
         >
-          <MyTextField name="email"/>
-        </Box>
-      </Form>
-    </Formik>
+          <AlertDialogContent style={{ background: "#f0f0f0" }}>
+            <AlertDialogLabel style={{ fontSize: 32 }} >
+              Subscribe to Basilwizi Updates
+            </AlertDialogLabel>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+                my: 5,
+                p: 2
+              }}
+            >
+              <Formik
+                initialValues={{ names: "", email: "", termsOfUse: false }}
+                onSubmit={(fields, { setSubmitting}) => {
+                  alertService.clear();
+                  setSubmitting(false);
+                  mailingService.save(fields).then(() => {
+                    alertService.success("Details have been saved. Thank you for subscribing to the Newsletter.");
+                    setSubmitting(false);
+                    handleClose();
+                  }).catch((error) => {
+                    alertService.error(error);
+                    setSubmitting(false);
+                  });
+                }}
+              >
+                {({ isSubmitting }) => (
+                  <Form>
+                    <AlertDialogDescription>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: ["column", "row"],
+                          justifyContent: ["center","space-around"]
+                        }}
+                      >
+                        <MyTextField
+                          label="Your Names"
+                          id="your-names"
+                          name="names"
+                          type="text"
+                        />
+                        <MyTextField
+                          label="Your Email"
+                          id="your-email"
+                          name="email"
+                          type="email"
+                        />
+                      </Box>
+                      <Box p={3}>
+                        <MyCheckBox
+                          label={
+                            <span>
+                              accept the terms of use as found in the following link: <TermsAndConditions />
+                            </span>
+                          }
+                          name="termsOfUse"
+                        />
+                      </Box>
+                    </AlertDialogDescription>
+                    <Box 
+                      p={1}
+                      sx={{
+                        display: 'flex',
+                        flexDirection: ['column','row'],
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-end',
+                        width: 1,
+                        mt: 8
+                      }}
+                    >
+                      <LoadingButton
+                        ref={cancelRef}
+                        onClick={handleClose}
+                        color='warning'
+                        type='button'
+                        variant='outlined'
+                      >
+                        Cancel
+                      </LoadingButton>
+                      <LoadingButton
+                        color='success'
+                        type={"submit"}
+                        loadingPosition="start"
+                        startIcon={<SendIcon color="success" />}
+                        variant="outlined"
+                        loading={isSubmitting}
+                      >
+                        subscribe me
+                      </LoadingButton>
+                    </Box>
+                  </Form>
+                )}
+              </Formik>
+            </Box>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      )
+    }
+    </>
   );
-}
+};
 
 export default Subscribe;

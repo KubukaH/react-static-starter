@@ -11,7 +11,6 @@ import NotFound from '../404/NotFound';
 import AppLayout from '../components/Layouts/mainLayout';
 import HomePage from '../home';
 import PagesIndex from '../pages';
-import MusicIndex from '../components/music';
 import ImagePreview from '../home/fill/previewImage';
 import ImageModal from '../home/fill/imageModal';
 import AlertPop from "../components/alert";
@@ -43,7 +42,6 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
-            <MusicIndex />
             <AlertPop />
             {/* Show the modal when a `backgroundLocation` is set */}
             {state && (

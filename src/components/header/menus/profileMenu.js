@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { Box } from '@mui/system';
 import { useCTX } from '../../context';
+import Writer from '../../../settings/writer';
 
 // Custom components imports
 
@@ -16,7 +17,7 @@ const ProfileMenu = () => {
       <Box 
         className="dropbtn"
       >
-        Login
+        Account
       </Box>
       <Box className="dropdown-content">
         <Box className="header">
@@ -25,14 +26,47 @@ const ProfileMenu = () => {
               fontSize: 20,
               color: "#fff",
               fontWeight: "bold",
-              float: "right",
               textDecoration: "none",
               height: "auto"
             }}
-            component={Link}
-            to="/basilwizi/accounts"
           >
-            Login or Signup for more 
+            Account Management and Settings
+          </Box>
+        </Box>
+        <Box className="row">
+          <Box className="column">
+            <h3>
+              Account One
+            </h3>
+          </Box>
+          <Box className="column">
+            <h3>
+              Actions
+            </h3>
+            <Writer />
+            <Box
+              component="a"
+              href="#"
+            >
+              Discussion Forum
+            </Box>
+          </Box>
+          <Box className="column">
+            <h3>
+              Logging Management
+            </h3>
+            <Box 
+              component={Link}
+              to="/basilwizi/accounts"
+            >
+              Login
+            </Box>
+            <Box component={Link} to="/basilwizi/accounts/signup">
+              Sign up
+            </Box>
+            <Box component={Link} to="/basilwizi/accounts/forgot-password">
+              Forgot password
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -78,8 +112,8 @@ const ProfileMenu = () => {
               Actions
             </h3>
             <Box
-              component={Link}
-              to="#"
+              component='a'
+              href="#"
             >
               Delete Account
             </Box>

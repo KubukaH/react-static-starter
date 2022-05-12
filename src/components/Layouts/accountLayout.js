@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 // MUI components
 import Box from "@mui/material/Box";
 
-const AccountLayout = () => {
+const AccountLayout = ({ title }) => {
   return (
     <Box
       sx={{
@@ -30,7 +30,7 @@ const AccountLayout = () => {
             fontFamily: "Elephant Regular"
           }}
         >
-          Basilwizi
+          Basilwizi Trust
         </Box>
         <Box
           sx={{
@@ -38,7 +38,8 @@ const AccountLayout = () => {
             fontWeight: 200,
             fontSize: 14,
             fontFamily: "Elephant Regular",
-            pt: 5
+            verticalAlign: "sup",
+            display: "inline"
           }}
         >
           &copy;
@@ -53,7 +54,7 @@ const AccountLayout = () => {
             display: { xs: "none", md: "block" }
           }}
         >
-          Trust
+          | {title}
         </Box>
       </Box>
       {/**

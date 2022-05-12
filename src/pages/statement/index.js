@@ -86,10 +86,21 @@ function OpenMoreDialogOne(props) {
           >
             <ClearIcon size="small" />
           </IconButton>
+          <Box 
+            sx={{ 
+              fontSize: 32, 
+              fontWeight: 500, 
+              color: '#a0a465',
+              textAlign: 'center',
+              textTransform: 'uppercase'
+            }} 
+          >
+            Core Values
+          </Box>
           <Box
             sx={{
               width: "100%",
-              height: "100%",
+              height: "auto",
               m: "auto",
               overflowY: "scroll"
             }}
@@ -212,12 +223,21 @@ function OpenMoreDialogTwo(props) {
           >
             <ClearIcon size="small" />
           </IconButton>
+          <Box sx={{ 
+            fontSize: 48, 
+            fontWeight: 500, 
+            color: '#a0a465',
+            textAlign: 'center',
+            textTransform: 'uppercase'
+            }} 
+          >
+            Objectives
+          </Box>
           <Box
             sx={{
               width: "100%",
-              height: "100%",
+              height: "auto",
               m: "auto",
-              overflowY: "scroll"
             }}
           >
             {

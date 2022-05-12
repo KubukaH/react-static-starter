@@ -2,7 +2,9 @@ import * as React from "react";
 
 // MUI components
 import Box from "@mui/material/Box";
+
 import { getImageById } from "../../settings/images";
+import Callout from "./callout";
 
 const ContactIndex = () => {
   const image = getImageById("basilwizi-trust-offices-in-binga-center")
@@ -79,7 +81,7 @@ const ContactIndex = () => {
               pl: "16px",
             }}
           >
-            Stand 291, Binga, Zimbabwe
+            Stand 2287, Commercial Area, Binga, Zimbabwe
           </Box>
           <Box
             sx={{ 
@@ -90,7 +92,7 @@ const ContactIndex = () => {
               pl: "16px",
             }}
           >
-            +263 15 356 or 366
+            +263 77 453 6658 / +263 78 280 6906
           </Box>
           <Box
             sx={{ 
@@ -101,12 +103,13 @@ const ContactIndex = () => {
               pl: "16px",
             }}
           >
-            bast-binga@basilwizi.org
+            info.basilwizi@gmail.com
           </Box>
         </Box>
       </Box>
+      <Callout />
     </Box>
   );
-}
+};
 
 export default ContactIndex;

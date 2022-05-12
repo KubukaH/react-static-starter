@@ -8,6 +8,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -23,7 +24,7 @@ type BlogPost struct {
 	Tags        []string
 }
 
-func main() {
+func handler() {
 	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file found")
 	}
@@ -64,5 +65,9 @@ func main() {
 		}
 		fmt.Printf("%s\n", output)
 	}
+}
 
+func main() {
+
+	lambda.Start(handler)
 }

@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { useParams } from "react-router-dom";
-import { useNetlifyIdentity } from "react-netlify-identity"
+import { useParams, useNavigate } from "react-router-dom";
+import { useNetlifyIdentity } from "react-netlify-identity";
+import queryString from "query-string";
 
 import { newsArchives } from '../../settings/archives/newsArchive';
-import { newsService } from '../../_services';
+import { newsService, likeService } from '../../_services';
 
 export const AuthContext = React.createContext();
 
@@ -21,21 +22,23 @@ export const ContextProvider = ({ children }) => {
   const identity = useNetlifyIdentity(url);
 
   const [rows, setRows] = React.useState([]);
+  const [articles, setArticles] = React.useState([]);
   const [items, setItems] = React.useState([]);
-  React.useEffect(() => newsService.getAll().then(x => setRows(x)),[rows]);
   React.useEffect(() => setItems(newsArchives), [items]);
-  const [articles, setArticles] = React.useState(rows);
-  const [searchText, setSearchText] = React.useState('');
-  const [article, setArticle] = React.useState({});
   const [archives, setArchives] = React.useState(items);
+  const [searchText, setSearchText] = React.useState('');
+  const [likes, setLikes] = React.useState([]);
 
-  // IDs
-  const { artId } = useParams();
+  /**
+   * 
+   * @param {message, date, title} params 
+   * @returns 
+   */
 
   /**
    * 
    * @param {title, author, date} params 
-   * @returns 
+   * @returns An object
    */
 
   const requestSearch = (searchValue) => {
@@ -46,13 +49,13 @@ export const ContextProvider = ({ children }) => {
         return searchRegex.test(row[field].toString());
       });
     });
-    setArticles(filteredRows);
+    setArticles( filteredRows );
   };
 
   const archiveSearch = (searchValue) => {
     setSearchText(searchValue);
     const searchRegex = new RegExp(escapeRegExp(searchValue), 'i');
-    const filteredRows = newsArchives.filter((row) => {
+    const filteredRows = items.filter((row) => {
       return Object.keys(row).some((field) => {
         return searchRegex.test(row[field].toString());
       });
@@ -61,22 +64,38 @@ export const ContextProvider = ({ children }) => {
   };
 
   /**
-   * Use Effect to strudge throught database for open data
+   * Use Effect to strudge through database for open data
    */
+  // news service db
+  React.useEffect(() => {newsService.getAll().then(x => {
+    if (!searchText) {
+      setArticles(x);
+    } else { setRows(x) };
+  })},[rows, articles, searchText]);
+
   React.useEffect(() => {
-    /** Get a single News article By ID */
-    newsService.getById(artId).then(x => setArticle(x));
-  }, [article]);
+    const { uaid } = queryString.parse(location.search);
+    const timer = setInterval(() => {
+      likeService.getAll().then(x => {
+        const its = x.filter(f => f.like_to === uaid);
+        setLikes(its);
+      });
+    }, 500);
+    return () => clearInterval(timer);
+  },[likes]);
 
   const value = {
+    /**
+     * Will spread the Identity widgets to context
+     */
     ...identity,
     /** News Context */
     articles,
     requestSearch,
     searchText,
-    article,
     archives,
-    archiveSearch
+    archiveSearch,
+    likes
   }
 
   return (<AuthContext.Provider value={value}>
