@@ -17,6 +17,8 @@ import { alertService } from '../_services/alert.service';
 const client = new faunadb.Client({
   secret: 'fnAEmZfZNpAARbpNzfs05789eQE_dsX-nExOPwoE',
   domain: 'db.eu.fauna.com',
+  port: 443,
+  scheme: 'https',
 });
 
 export const newItem = async (colc, data) => {
