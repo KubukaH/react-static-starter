@@ -1,4 +1,6 @@
 import * as React from "react";
+import { createEditor } from 'slate';
+import { Slate, Editable, withReact } from 'slate-react';
 
 // MUI components
 import Box from "@mui/material/Box";
@@ -12,11 +14,25 @@ import { Link } from "react-router-dom";
 import SearchBox from "./searchBox";
 import { useCTX } from "../../components/context";
 
+const initialValue = [
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text:
+          'Something went wrong ...',
+      },
+    ],
+  },
+];
+
 const perPage = 6;
 const NewsHeadlines = () => {
   const [page, setPage] = React.useState(0);
   const ctx = useCTX();
   const { articles, requestSearch, searchText } = ctx;
+
+  const editor = React.useMemo(() => withReact(createEditor()), []);
 
   const theme = useTheme();
 
@@ -74,7 +90,12 @@ const NewsHeadlines = () => {
                 textAlign: "justify"
               }}
             >
-              <span dangerouslySetInnerHTML={{__html:head.article_content.slice(0,256)}} />
+              <Slate 
+                editor={editor} 
+                value={head.article_content ? head.article_content.slice(0,256) : initialValue}
+              >
+                <Editable readOnly placeholder="Something went wrong..." />
+              </Slate>
             </Box>
             <Box
               component={Link}
