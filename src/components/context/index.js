@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { useNetlifyIdentity } from "react-netlify-identity";
-import queryString from "query-string";
 
 import { newsArchives } from '../../settings/archives/newsArchive';
 import { newsService, likeService } from '../../_services';
@@ -17,8 +16,7 @@ export const ContextProvider = ({ children }) => {
   /**
    * Identity
    */
-  const [url, setUrl] = React.useState(window.location.origin);
-  React.useEffect(() => setUrl("https://basilwizi.netlify.app"));
+  const [url] = React.useState("https://basilwizi.netlify.app");
   const identity = useNetlifyIdentity(url);
 
   const [rows, setRows] = React.useState([]);
@@ -28,6 +26,10 @@ export const ContextProvider = ({ children }) => {
   const [archives, setArchives] = React.useState(items);
   const [searchText, setSearchText] = React.useState('');
   const [likes, setLikes] = React.useState([]);
+
+  const { pid } = useParams();
+  const searchParams = new URLSearchParams(pid);
+  const uaid = searchParams.get('uaid');
 
   /**
    * 
@@ -74,14 +76,10 @@ export const ContextProvider = ({ children }) => {
   })},[rows, articles, searchText]);
 
   React.useEffect(() => {
-    const { uaid } = queryString.parse(location.search);
-    const timer = setInterval(() => {
-      likeService.getAll().then(x => {
-        const its = x.filter(f => f.like_to === uaid);
-        setLikes(its);
-      });
-    }, 500);
-    return () => clearInterval(timer);
+    likeService.getAll().then(x => {
+      const its = x.filter(f => f.like_to === uaid);
+      setLikes(its);
+    });
   },[likes]);
 
   const value = {

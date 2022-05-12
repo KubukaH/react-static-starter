@@ -49,11 +49,11 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".jsx"],
-    alias: {
-      '@': path.resolve(__dirname, 'src/'),
-    },
-    fallback: { "buffer": false }
+    extensions: [".js", ".jsx"],
+    fallback: { 
+      "buffer": false,
+      "process": require.resolve("process/browser") 
+    }
   },
   optimization: {
     moduleIds: 'deterministic',

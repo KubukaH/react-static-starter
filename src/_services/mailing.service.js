@@ -1,4 +1,4 @@
-import { fetchWrapper } from '@/_helpers';
+import { fetchWrapper } from '../_helpers';
 
 const baseUrl = `http://localhost:9000/mailing`;
 

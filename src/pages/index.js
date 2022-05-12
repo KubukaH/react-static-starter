@@ -60,7 +60,7 @@ const PagesIndex = () => {
           element: <NewsLayout title="News Online" />,
           children: [
             {index: true, element: <NewsHeadlines />},
-            {path: ":artId", element: <NewsArticle />}
+            {path: ":pid", element: <NewsArticle />}
           ]
         },
         {

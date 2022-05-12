@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Formik, Form } from "formik";
-import queryString from "query-string";
+import { useParams, useNavigate } from "react-router-dom";
 
 // MUI Components
 import Box from "@mui/material/Box";
@@ -38,8 +38,9 @@ const Like = ({ open, handleClick, anchorEl, close }) => {
   const [likeThis, setLikeThis] = React.useState({});
 
   const { likes } = useCTX();
-
-  const { uaid } = queryString.parse(location.search);
+  const { pid } = useParams();
+  const searchParams = new URLSearchParams(pid);
+  const uaid = searchParams.get('uaid');
 
   React.useEffect(() => {
     likeService.getLikedBy(uaid).then(ls => setLikeThis(ls));

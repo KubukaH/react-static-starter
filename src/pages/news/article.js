@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import moment from "moment";
-import queryString from "query-string";
+import { createEditor } from 'slate';
+import { Slate, Editable, withReact } from 'slate-react';
 
 // MUI Components
 import Box from "@mui/material/Box";
@@ -20,6 +21,18 @@ import { alertService, newsService } from "../../_services";
 import FormDialog from "../../components/modal";
 import useLoading from "../../components/extras/loading";
 
+const initialValue = [
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text:
+          'Something went wrong ...',
+      },
+    ],
+  },
+];
+
 const NewsArticle = () => {
   const [anchorLike, setAnchorLike] = React.useState(null);
   const [openLike, setOpenLike] = React.useState(false);
@@ -29,7 +42,9 @@ const NewsArticle = () => {
   const [openBd, setOpenBd] = React.useState(false);
 
   const { likes, isLoggedIn, user } = useCTX();
-  const { uaid } = queryString.parse(location.search);
+  const { pid } = useParams();
+  const searchParams = new URLSearchParams(pid);
+  const uaid = searchParams.get('uaid');
 
   React.useEffect(() => {
     newsService.getById(uaid).then(x => setArticle(x));
@@ -73,7 +88,9 @@ const NewsArticle = () => {
     }).catch((error) => {
       alertService.error(error);
     });
-  }
+  };
+
+  const editor = React.useMemo(() => withReact(createEditor()), []);
 
   const grid = React.useCallback(() => {
     if (article.id !== null) { return (
@@ -121,7 +138,12 @@ const NewsArticle = () => {
           p: [1, 4]
         }}
       >
-        <span dangerouslySetInnerHTML={{ __html: article.article_content }} />
+        <Slate 
+          editor={editor} 
+          value={article.article_content ? article.article_content: initialValue}
+        >
+          <Editable readOnly placeholder="Something went wrong..." />
+        </Slate>
       </Box>
       </>
     ) };

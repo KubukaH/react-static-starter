@@ -29,14 +29,5 @@ module.exports = merge(common, {
     historyApiFallback: true,
     hot: 'only',
     open: true,
-    proxy: {
-      "/.netlify": {
-        target: "http://localhost:9000",
-        pathRewrite: {
-          "^/.netlify/functions": "",
-          secure: false,
-        }
-      }
-    },
   },
 });
